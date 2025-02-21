@@ -17,8 +17,8 @@ export default [
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
           depConstraints: [
             {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
+              sourceTag: 'resume-website',
+              onlyDependOnLibsWithTags: ['package'],
             },
           ],
         },

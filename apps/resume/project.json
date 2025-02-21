@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/resume/src",
   "projectType": "application",
-  "tags": [],
+  "tags": ["resume-website"],
   "// targets": "to see all targets run: nx show project resume --web",
   "targets": {}
 }
