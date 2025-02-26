@@ -23,5 +23,5 @@
     "vitest.config.ts",
     "vitest.config.mts"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx", "../../packages/components/src/lib/footer/footer.tsx", "../../packages/components/src/lib/navbar/navbar.tsx"]
 }

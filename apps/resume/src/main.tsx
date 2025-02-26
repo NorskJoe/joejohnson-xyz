@@ -2,20 +2,45 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './app/app';
 import { BrowserRouter, Outlet } from 'react-router-dom';
-import Navbar from './layout/navbar/navbar';
-import Footer from './layout/footer/footer';
+import { Footer, Navbar } from '@joejohnson-xyz/components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const navbarLinks = [
+  {
+    link: '/',
+    name: 'Home',
+  },
+  {
+    link: '/projects',
+    name: 'Projects',
+  },
+  {
+    link: '/experience',
+    name: 'Experience',
+  },
+];
+
+const footerLinks = [
+  {
+    name: "GitHub",
+    link: 'https://github.com/NorskJoe'
+  },
+  {
+    name: "LinkedIn",
+    link: 'https://www.linkedin.com/in/joseph-johnson-284510126/'
+  }
+]
+
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <Navbar />
+      <Navbar links={navbarLinks}/>
       <App />
       <Outlet />
-      <Footer />
+      <Footer links={footerLinks} />
     </BrowserRouter>
   </StrictMode>
 );
