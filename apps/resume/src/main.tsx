@@ -25,19 +25,19 @@ const navbarLinks = [
 
 const footerLinks = [
   {
-    name: "GitHub",
-    link: 'https://github.com/NorskJoe'
+    name: 'GitHub',
+    link: 'https://github.com/NorskJoe',
   },
   {
-    name: "LinkedIn",
-    link: 'https://www.linkedin.com/in/joseph-johnson-284510126/'
-  }
-]
+    name: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/joseph-johnson-284510126/',
+  },
+];
 
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <Navbar links={navbarLinks}/>
+      <Navbar links={navbarLinks} />
       <App />
       <Outlet />
       <Footer links={footerLinks} />
