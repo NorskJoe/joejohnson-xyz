@@ -1,7 +1,24 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 40rem;
+  color: white;
+  background-color: rgb(37, 37, 37);
+  box-shadow: -8px 0 16px -8px rgba(115, 115, 115, 0.75),
+    16px 0 32px -8px rgba(115, 115, 115, 0.75),
+    0 1px 32px -8px rgba(115, 115, 115, 0.75);
+
+  .body-text {
+    text-align: justify;
+  }
+
+  .detail-content {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+}

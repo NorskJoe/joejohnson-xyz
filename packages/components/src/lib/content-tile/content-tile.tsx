@@ -13,9 +13,9 @@ const ContentTile = ({
   tags,
 }: ContentTileProps) => {
   return (
-    <div>
+    <div className={styles['container']}>
       <h1>{title}</h1>
-      {imageUrl && imageType && (
+      {imageUrl && (
         <Image
           imageUrl={imageUrl}
           imageType={imageType}
@@ -24,8 +24,13 @@ const ContentTile = ({
       )}
       <h2>{subTitle}</h2>
       <h3>{summary}</h3>
-      <p>{bodyText}</p>
-      {tags && tags.map((tag, index) => <Tag key={index} name={tag.name} />)}
+      <div className={styles['detail-content']}>
+        <p className={styles['body-text']}>{bodyText}</p>
+        {tags &&
+          tags.map((tag, index) => (
+            <Tag key={index} name={tag.name} size={tag.size} />
+          ))}
+      </div>
     </div>
   );
 };

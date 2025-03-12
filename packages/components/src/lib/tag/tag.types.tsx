@@ -1,3 +1,4 @@
 export interface TagProps {
-    name: string;
+  name: string;
+  size: 'small' | 'medium' | 'large';
 }
