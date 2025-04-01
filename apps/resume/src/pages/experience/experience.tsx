@@ -6,7 +6,7 @@ const experienceProps = [
   {
     company: 'WooliesX',
     jobTitle: 'Full-stack Software Engineer',
-    imageUrl: '/images/wooliesx.png',
+    imageUrl: 'logos/wooliesx.png',
     startDate: '2021-01-01',
     description:
       'Work across several different services and areas on the Woolworths Online store, primarily working on content personalisation and automation, as well as optimising and adding new features to the store locator, integrating with 3rd party advertisers, and writing a new recipes module.  Working primarily with Angular7+, JavaScript, Adobe Target, React, and .NET. Deploying and monitoring using Microsoft Azure DevOps.',
@@ -14,7 +14,7 @@ const experienceProps = [
   {
     company: 'Quantum IT',
     jobTitle: 'Full-stack Software Engineer',
-    imageUrl: '/images/quantumit.png',
+    imageUrl: 'logos/quantumit.png',
     startDate: '2018-02-01',
     endDate: '2020-10-01',
     description:
