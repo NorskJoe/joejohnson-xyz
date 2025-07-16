@@ -1,17 +1,15 @@
-import { createWriteStream } from 'fs';
 import { ImageType } from '../shared/shared.types';
 import styles from './image.module.scss';
 import { ImageProps } from './image.types';
 
 const Image = ({ imageUrl, imageType, altText }: ImageProps) => {
-  console.log(imageType);
+  let imageClass = 'image';
   if (imageType) {
-    const imageClass = `image-${ImageType[imageType]}`.toLowerCase();
-    console.log(imageClass);
+    imageClass += `-${ImageType[imageType]}`.toLowerCase();
   }
   return (
     <div className={styles['container']}>
-      <img src={imageUrl} alt={altText} />
+      <img className={styles[imageClass]}src={imageUrl} alt={altText} />
     </div>
   );
 };

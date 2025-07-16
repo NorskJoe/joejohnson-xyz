@@ -4,8 +4,8 @@ export interface Link {
 }
 
 export enum ImageType {
-    LOGO,
-    ROUND,
-    SQUARE_ZOOM    
+    LOGO = 1,
+    ROUND = 2,
+    SQUARE_ZOOM = 3    
 }
 

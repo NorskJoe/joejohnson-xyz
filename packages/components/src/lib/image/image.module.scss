@@ -1,7 +1,6 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.image {
+  &-logo {
+    max-height: 50px;
+    max-width: 100px;
+  }
+}

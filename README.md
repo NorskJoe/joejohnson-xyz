@@ -22,6 +22,8 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 - static content
 - migrated from standalone next.js project ([View on GitHub](https://github.com/NorskJoe/pw-ui))
 - deployed using Azure DevOps
+
+`npx nx serve-static resume`
 ### Component Library
 #### `packages/components`
 
