@@ -22,9 +22,14 @@ const experienceProps = [
   },
 ];
 
+const formatDate = (date: string): string => {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short' };
+  return new Date(date).toLocaleDateString('en-AU', options);
+}
+
 const getEndDate = (date: string | undefined): string => {
   if (date) {
-    return date;
+    return formatDate(date);
   }
   return 'Present';
 };
@@ -38,7 +43,7 @@ const Experience = () => {
             key={index}
             title={item.company}
             subTitle={item.jobTitle}
-            summary={`${item.startDate} - ${getEndDate(item.endDate)}`}
+            summary={`${formatDate(item.startDate)} - ${getEndDate(item.endDate)}`}
             bodyText={item.description}
             imageUrl={item.imageUrl}
             imageType={ImageType.LOGO}
