@@ -1,5 +1,6 @@
 import { ContentTile } from '@joejohnson-xyz/components';
 import { ImageType } from '@joejohnson-xyz/components';
+import styles from '../../styles.module.scss';
 
 const projectProps = [
   {
@@ -7,15 +8,19 @@ const projectProps = [
     tags: [
       {
         name: '.Net Core',
+        size: 'small',
       },
       {
         name: 'Angular 9',
+        size: 'small',
       },
       {
         name: 'SQL Server',
+        size: 'small',
       },
       {
         name: 'Web API',
+        size: 'small',
       },
     ],
     description:
@@ -28,9 +33,11 @@ const projectProps = [
     tags: [
       {
         name: 'Angular 15',
+        size: 'small',
       },
       {
         name: 'storybook.js',
+        size: 'small',
       },
     ],
     description:
@@ -42,12 +49,15 @@ const projectProps = [
     tags: [
       {
         name: '.Net Core',
+        size: 'small',
       },
       {
         name: 'Flutter',
+        size: 'small',
       },
       {
         name: 'Web API',
+        size: 'small',
       },
     ],
     description:
@@ -58,7 +68,8 @@ const projectProps = [
 
 const Projects = () => {
   return (
-    <>
+    <div className={styles['page-container']}>
+      <div className={styles['grid-container']}>
       {projectProps.map((item, index) => (
         <ContentTile
           key={index}
@@ -70,7 +81,8 @@ const Projects = () => {
           tags={item.tags.map((tag) => ({ name: tag.name, size: 'small' }))}
         />
       ))}
-    </>
+    </div>
+    </div>
   );
 };
 

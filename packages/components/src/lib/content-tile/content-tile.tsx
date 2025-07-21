@@ -22,15 +22,18 @@ const ContentTile = ({
           altText="placeholder"
         />
       )}
-      <h2>{subTitle}</h2>
-      <h3>{summary}</h3>
+      {subTitle && <h2>{subTitle}</h2>}
+      {summary && <h3>{summary}</h3>}
       <div className={styles['detail-content']}>
         <p className={styles['body-text']}>{bodyText}</p>
-        {tags &&
-          tags.map((tag, index) => (
+      </div>
+      {tags && (
+        <div className={styles['tags']}>
+          {tags.map((tag, index) => (
             <Tag key={index} name={tag.name} size={tag.size} />
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

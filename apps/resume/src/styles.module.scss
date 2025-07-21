@@ -22,3 +22,23 @@ a {
 .rootContainer {
   display: flex;
 }
+
+.page-container {
+  display: flex;
+  justify-content: center;
+
+  .grid-container {
+    display: grid;
+    display: grid;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    padding-top: 3rem;
+    justify-items: center;
+  }
+  @media (min-width: 1000px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      width: 85%;
+    }
+  }
+}

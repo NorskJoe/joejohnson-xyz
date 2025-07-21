@@ -1,7 +1,12 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.tag {
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 1px 3px, rgba(255, 255, 255, 0.3) 0px 0px 1px 2px;
+  &-small {
+    padding: 2px 4px;
+    margin: 4px 8px;
+    border-radius: 4px;
+
+    .tag-text {
+      margin: 0;
+    }
+  }
+}

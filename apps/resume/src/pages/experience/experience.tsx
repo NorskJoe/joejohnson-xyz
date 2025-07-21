@@ -1,6 +1,6 @@
 import { ContentTile } from '@joejohnson-xyz/components';
 import { ImageType } from '@joejohnson-xyz/components';
-import styles from './experience.module.scss';
+import styles from '../../styles.module.scss';
 
 const experienceProps = [
   {
