@@ -3,4 +3,12 @@
     max-height: 50px;
     max-width: 100px;
   }
+
+  &-round {
+    border-radius: 50%;
+    border: 1px solid black !important;
+    max-height: 250px;
+    height: 100%;
+    width: auto;
+  }
 }
