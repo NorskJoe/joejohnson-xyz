@@ -41,7 +41,7 @@ const projectProps = [
       },
     ],
     description:
-      'Web app to input bicycle gears, and calculate the ratios/speed for the given inputs.  The main purpose of this project was to use storybook to facilitate component driven development.',
+      'Web app to input bicycle gear sizes, and calculate the ratios/speed for the given inputs.  The main purpose of this project was to use storybook to facilitate component driven development.',
     imageUrl: '/images/gear-ratio.gif',
   },
   {
@@ -61,7 +61,7 @@ const projectProps = [
       },
     ],
     description:
-      'Small proof of concept mobile app built using Flutter and Dart.  Allows user authentication and will display promotions based on user settings.  The main purpose of this project was to try out mobile development.',
+      'Small proof of concept mobile app built using Flutter and Dart.  Allows user authentication and will display promotions based on user settings.  The main purpose of this project was to try mobile development.',
     imageUrl: '/images/flutter-carousel.gif',
   },
 ];
@@ -70,18 +70,18 @@ const Projects = () => {
   return (
     <div className={styles['page-container']}>
       <div className={styles['grid-container']}>
-      {projectProps.map((item, index) => (
-        <ContentTile
-          key={index}
-          title={item.name}
-          imageUrl={item.imageUrl}
-          imageType={ImageType.SQUARE_ZOOM}
-          ctaUrl={item.link}
-          bodyText={item.description}
-          tags={item.tags.map((tag) => ({ name: tag.name, size: 'small' }))}
-        />
-      ))}
-    </div>
+        {projectProps.map((item, index) => (
+          <ContentTile
+            key={index}
+            title={item.name}
+            imageUrl={item.imageUrl}
+            imageType={ImageType.SQUARE_ZOOM}
+            ctaUrl={item.link}
+            bodyText={item.description}
+            tags={item.tags.map((tag) => ({ name: tag.name, size: 'small' }))}
+          />
+        ))}
+      </div>
     </div>
   );
 };
