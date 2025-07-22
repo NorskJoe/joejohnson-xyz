@@ -19,7 +19,7 @@ const Home = () => {
         altText="Porfile Image"
         imageType={ImageType.ROUND}
       ></Image>
-      <section>
+      <section className={styles['content']}>
         <h1>Joseph Johnson</h1>
         <h2>Full Stack Software Engineer</h2>
         <p className={styles['bio']}>

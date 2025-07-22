@@ -4,6 +4,12 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.content {
+  max-width: 100vh;
 }
 
 .bio {
