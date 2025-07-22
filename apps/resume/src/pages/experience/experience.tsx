@@ -9,7 +9,7 @@ const experienceProps = [
     imageUrl: 'logos/wooliesx.png',
     startDate: '2021-01-01',
     description:
-      'Work across several different services and areas on the Woolworths Online store, primarily working on content personalisation and automation, as well as optimising and adding new features to the store locator, integrating with 3rd party advertisers, and writing a new recipes module.  Working primarily with Angular7+, JavaScript, Adobe Target, React, and .NET. Deploying and monitoring using Microsoft Azure DevOps.',
+      'Focused on personalisation and content delivery for the Woolworths Online Store. I’ve contributed to major projects including a targeted video ad unit, migration of the website from Angular to React, contributing to the Woolworths Group Core Components library, and modernising content services. Skilled in React, Angular, Node.js, .NET Core, Azure DevOps, and Adobe Target. I also support team growth through onboarding, knowledge sharing, and technical leadership.',
   },
   {
     company: 'Quantum IT',
@@ -18,7 +18,7 @@ const experienceProps = [
     startDate: '2018-02-01',
     endDate: '2020-10-01',
     description:
-      'Writing new features, fixing bugs, and diagnosing production issues for a student placement management system.  The product was used internationally by over 100 institutions catering to admin, staff, and student users.  Working in .Net, AngularJS, and Angular 6+, and helping maintain build and release pipelines in Microsoft Azure.',
+      'I worked across both frontend (Angular) and backend (.NET Core/.NET Framework, SQL Server) to build and maintain InPlace, a globally used student management system. I led key projects like site localisation for Welsh and Arabic, migrated legacy Razor pages to Angular, and consistently ranked highest in resolving client production issues. I also contributed to release management using Azure DevOps.',
   },
 ];
 
