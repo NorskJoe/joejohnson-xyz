@@ -14,9 +14,8 @@ jobs:
       - run: npm install
       - run: npx nx run resume:build --no-cloud
 
-      
-      - uses: actions/checkout@v4
-      - uses: bacongobbler/azure-blob-storage-upload@main
+      - name: Upload to Azure Blob Storage
+        uses: bacongobbler/azure-blob-storage-upload@main
         with:
           source_dir: ./apps/resume/dist/resume
           container_name: $web
