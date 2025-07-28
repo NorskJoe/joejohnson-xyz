@@ -13,7 +13,7 @@ jobs:
           cache: 'npm'
       - run: npm install
       - uses: nrwl/nx-set-shas@v4
-      - run: npx nx run resume:build
+      - run: npx nx run resume:build --no-cloud
 
       
       - uses: actions/checkout@v4
