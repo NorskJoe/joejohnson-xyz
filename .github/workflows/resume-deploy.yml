@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: bacongobbler/azure-blob-storage-upload@main
         with:
-          source_dir: dist/apps/resume
+          source_dir: dist/resume
           container_name: $web
           connection_string: ${{ secrets.CONNECTIONSTRING }}
           overwrite: 'true'
