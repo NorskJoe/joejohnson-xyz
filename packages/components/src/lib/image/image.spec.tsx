@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Components from './components';
+import Image from './image';
 
-describe('Components', () => {
+describe('Image', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Components />);
+    const { baseElement } = render(<Image />);
     expect(baseElement).toBeTruthy();
   });
 });
