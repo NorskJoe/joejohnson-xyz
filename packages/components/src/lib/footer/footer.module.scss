@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  min-height: 5vh;
+  border-top: 1px solid lightgray;
+  padding-top: 1em;
+  margin-top: 1em;
+  align-items: center;
+
+  &-link {
+    padding: 0 8px;
+    img {
+      max-width: 30px;
+      height: auto;
+    }
+  }
+}
