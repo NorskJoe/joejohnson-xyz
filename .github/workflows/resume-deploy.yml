@@ -18,6 +18,6 @@ jobs:
         uses: bacongobbler/azure-blob-storage-upload@main
         with:
           source_dir: ./apps/resume/dist/resume
-          container_name: $web
+          container_name: '$web'
           connection_string: ${{ secrets.CONNECTIONSTRING }}
           overwrite: 'true'
