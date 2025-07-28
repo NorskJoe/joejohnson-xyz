@@ -12,14 +12,13 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm install
-      - uses: nrwl/nx-set-shas@v4
       - run: npx nx run resume:build --no-cloud
 
       
       - uses: actions/checkout@v4
       - uses: bacongobbler/azure-blob-storage-upload@main
         with:
-          source_dir: dist/resume
+          source_dir: ./dist/resume
           container_name: $web
           connection_string: ${{ secrets.CONNECTIONSTRING }}
           overwrite: 'true'
