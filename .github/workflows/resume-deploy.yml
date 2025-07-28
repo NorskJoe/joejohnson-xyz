@@ -5,11 +5,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
@@ -17,8 +12,11 @@ jobs:
       - run: npm install
       - run: npx nx run resume:build
 
-      - name: Deploy to Azure
-        uses: azure/CLI@v2
+      
+      - uses: actions/checkout@v4
+      - uses: bacongobbler/azure-blob-storage-upload@main
         with:
-          inlineScript: |
-            az storage blob upload-batch --account-name jjohnsonpersonal --destination '$web' --source dist/apps/resume --overwrite true
+          source_dir: dist/apps/resume
+          container_name: $web
+          connection_string: ${{ secrets.CONNECTIONSTRING }}
+          overwrite: 'true'
