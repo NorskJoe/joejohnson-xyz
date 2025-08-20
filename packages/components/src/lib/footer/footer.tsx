@@ -7,7 +7,7 @@ const Footer = ({ links }: FooterProps) => {
     <footer className={styles['footer']}>
       {links.map((item) => (
         <Link key={item.name} to={item.link} className={styles['footer-link']}>
-          <img src={`icons/${item.name.toLowerCase()}.png`} alt={item.name} />
+          <img src={item.imageUrl} alt={item.name} />
         </Link>
       ))}
     </footer>

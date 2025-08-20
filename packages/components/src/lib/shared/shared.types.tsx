@@ -1,6 +1,7 @@
 export interface Link {
     link: string;
     name: string;
+    imageUrl?: string;
 }
 
 export enum ImageType {

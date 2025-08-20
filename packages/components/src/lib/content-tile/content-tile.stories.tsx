@@ -3,7 +3,6 @@ import ContentTile from './content-tile';
 import { ContentTileProps } from './content-tiles.types';
 import { ImageType } from '../shared/shared.types';
 import { TagProps } from '../tag/tag.types';
-import { title } from 'process';
 
 const meta: Meta<typeof ContentTile> = {
   component: ContentTile,
