@@ -1,0 +1,9 @@
+{
+  "name": "bike-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/bike-tools/src",
+  "projectType": "application",
+  "tags": ["bike-tools"],
+  "// targets": "to see all targets run: nx show project bike-tools --web",
+  "targets": {}
+}
