@@ -14,12 +14,19 @@ const meta: Meta<typeof Footer> = {
     },
   },
   render: (args: FooterProps) => {
-    // Ensure the footer is at the bottom of the page 
+    // Ensure the footer is at the bottom of the page
     return (
-      <div style={{ height: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-      <BrowserRouter>
-        <Footer {...args} />
-      </BrowserRouter>
+      <div
+        style={{
+          height: '90vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <BrowserRouter>
+          <Footer {...args} />
+        </BrowserRouter>
       </div>
     );
   },

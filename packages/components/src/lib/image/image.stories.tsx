@@ -30,7 +30,7 @@ const meta: Meta<typeof Image> = {
   },
   render: (args: ImageProps) => {
     return (
-      <div style={{margin: '2em'}}>
+      <div style={{margin: '4em'}}>
         <Image {...args} />
       </div>
     );
@@ -48,7 +48,7 @@ export const Round: Story = {
   } as ImageProps,
 };
 
-export const Square: Story = {
+export const SquareZoom: Story = {
   args: {
     imageUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     imageType: ImageType.SQUARE_ZOOM,
