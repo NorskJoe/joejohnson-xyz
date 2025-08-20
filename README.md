@@ -29,8 +29,11 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 
 - react component library
 - for use across other projects in the monorepo
+- storybook exists
 - not published to any registries
-- TODO: deploy storybook
+- TODO: deploy storybook?
+
+`npx nx run components:storybook`
 ### [Gear Ratios](https://bike.joejohnson.xyz/)
 #### `apps/gearratios`
 
