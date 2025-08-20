@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from 'storybook/internal/types';
-import { ContentTile } from './content-tile';
+import ContentTile from './content-tile';
 
 const meta: Meta<typeof ContentTile> = {
   component: ContentTile,

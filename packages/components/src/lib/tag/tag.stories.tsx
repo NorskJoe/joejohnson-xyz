@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from 'storybook/internal/types';
-import { Tag } from './tag';
+import Tag from './tag';
 
 const meta: Meta<typeof Tag> = {
   component: Tag,

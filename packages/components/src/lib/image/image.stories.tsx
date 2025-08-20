@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from 'storybook/internal/types';
-import { Image } from './image';
+import Image from './image';
 
 const meta: Meta<typeof Image> = {
   component: Image,
