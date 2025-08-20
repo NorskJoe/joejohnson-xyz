@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from 'storybook/internal/types';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Image from './image';
 import { ImageProps } from './image.types';
 import { ImageType } from '../shared/shared.types';
@@ -6,7 +6,7 @@ import { ImageType } from '../shared/shared.types';
 const meta: Meta<typeof Image> = {
   component: Image,
   title: 'Image',
-  argsTypes: {
+  argTypes: {
     imageUrl: {
       control: 'text',
       description: 'URL of the image to display',

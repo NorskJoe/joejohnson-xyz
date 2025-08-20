@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from 'storybook/internal/types';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Footer from './footer';
 import { FooterProps } from './footer.types';
 import { Link } from '../shared/shared.types';

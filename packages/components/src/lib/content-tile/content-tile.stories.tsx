@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from 'storybook/internal/types';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import ContentTile from './content-tile';
 import { ContentTileProps } from './content-tiles.types';
 import { ImageType } from '../shared/shared.types';
@@ -46,7 +46,7 @@ const meta: Meta<typeof ContentTile> = {
       control: 'text',
       description: 'Summary text for the content tile',
     },
-  }
+  },
 };
 
 export default meta;
@@ -54,12 +54,14 @@ type Story = StoryObj<ContentTileProps>;
 
 export const RoundImage: Story = {
   args: {
-    bodyText: 'This is the body text of the content tile. It provides additional information about the content.',
+    bodyText:
+      'This is the body text of the content tile. It provides additional information about the content.',
     ctaUrl: 'https://joejohnson.xyz',
     imageType: ImageType.ROUND,
     imageUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     subTitle: 'Subtitle Example',
-    summary: 'This is a summary of the content tile. It gives a brief overview of what the content is about.',
+    summary:
+      'This is a summary of the content tile. It gives a brief overview of what the content is about.',
     tags: [
       { name: 'Tag1', size: 'small' },
       { name: 'Tag2', size: 'small' },
@@ -70,12 +72,14 @@ export const RoundImage: Story = {
 
 export const SquareImage: Story = {
   args: {
-    bodyText: 'This is the body text of the content tile. It provides additional information about the content.',
+    bodyText:
+      'This is the body text of the content tile. It provides additional information about the content.',
     ctaUrl: 'https://joejohnson.xyz',
     imageType: ImageType.SQUARE_ZOOM,
     imageUrl: 'https://placehold.jp/160x80.png',
     subTitle: 'Subtitle Example',
-    summary: 'This is a summary of the content tile. It gives a brief overview of what the content is about.',
+    summary:
+      'This is a summary of the content tile. It gives a brief overview of what the content is about.',
     tags: [
       { name: 'Tag1', size: 'small' },
       { name: 'Tag2', size: 'small' },
@@ -86,12 +90,14 @@ export const SquareImage: Story = {
 
 export const LogoImage: Story = {
   args: {
-    bodyText: 'This is the body text of the content tile. It provides additional information about the content.',
+    bodyText:
+      'This is the body text of the content tile. It provides additional information about the content.',
     ctaUrl: 'https://joejohnson.xyz',
     imageType: ImageType.LOGO,
     imageUrl: 'https://placehold.jp/100x50.png',
     subTitle: 'Subtitle Example',
-    summary: 'This is a summary of the content tile. It gives a brief overview of what the content is about.',
+    summary:
+      'This is a summary of the content tile. It gives a brief overview of what the content is about.',
     tags: [
       { name: 'Tag1', size: 'small' },
       { name: 'Tag2', size: 'small' },
@@ -100,10 +106,10 @@ export const LogoImage: Story = {
   } as ContentTileProps,
 };
 
-
 export const Minimal: Story = {
   args: {
-    bodyText: 'This is the body text of the content tile. It provides additional information about the content.',
+    bodyText:
+      'This is the body text of the content tile. It provides additional information about the content.',
     title: 'Content Tile Example',
   } as ContentTileProps,
 };
