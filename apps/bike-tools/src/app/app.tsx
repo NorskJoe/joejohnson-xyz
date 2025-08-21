@@ -10,9 +10,10 @@ export function App() {
       <Routes>
         {/* TODO: Home or Landing page */}
         <Route path="/" element={<div>Welcome to Bike Tools!</div>} />
+        {/* TODO: Tools landing page */}
         <Route path="gears" element={<Gears />} />
         <Route path="blog" element={<BlogHome />}>
-          {/* blog posts here? */}
+          {/* TODO: blog posts here? */}
         </Route>
       </Routes>
     </div>
