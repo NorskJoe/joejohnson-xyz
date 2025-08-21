@@ -21,7 +21,7 @@ export default defineConfig(() => ({
   //  plugins: [ nxViteTsPaths() ],
   // },
   build: {
-    outDir: '../../dist/apps/bike-tools',
+    outDir: './dist/bike-tools',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

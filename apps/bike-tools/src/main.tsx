@@ -8,13 +8,41 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const navbarLinks = [
+  {
+    link: '/',
+    name: 'Home',
+  },
+  {
+    link: '/gears',
+    name: 'Tools',
+  },
+  {
+    link: '/blog',
+    name: 'Blog',
+  },
+];
+
+const footerLinks = [
+  {
+    name: 'GitHub',
+    link: 'https://github.com/NorskJoe',
+    imageUrl: 'icons/github.png',
+  },
+  {
+    name: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/joseph-johnson-284510126/',
+    imageUrl: 'icons/linkedin.png',
+  },
+];
+
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <Navbar links={[]} />
+      <Navbar links={navbarLinks} />
       <App />
       <Outlet />
-      <Footer links={[]} />
+      <Footer links={footerLinks} />
     </BrowserRouter>
   </StrictMode>
 );
