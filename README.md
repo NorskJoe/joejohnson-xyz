@@ -6,6 +6,13 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 
 ### Commands
 ------------------------------
+### First time setup
+#### Install NX
+`npm add --global nx`
+
+#### Install packages
+`npm i`
+
 #### List all projects using nx:
 `npx nx show projects`
 
