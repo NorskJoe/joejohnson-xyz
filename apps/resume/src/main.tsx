@@ -32,7 +32,7 @@ const footerLinks = [
   {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/joseph-johnson-284510126/',
-    imagUrl: 'icons/linkedin.png',
+    imageUrl: 'icons/linkedin.png',
   },
 ];
 

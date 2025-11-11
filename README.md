@@ -46,3 +46,11 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 
 - TODO: migrate from [Angular project](https://github.com/NorskJoe/GearRatios)
 - currently deployed using [fly.io](https://fly.io)
+
+### Recipes
+#### `apps/recipes`
+- TODO: build read-only site
+- TODO: build admin site to add recipes
+- app routing (page, not-found, error, loading, etc)
+- API currently mocked with json-server
+`npx json-server --port 3030 --watch .\apps\recipes\src\mocks\db.json`
