@@ -9,7 +9,7 @@ const Footer = ({ links }: FooterProps) => {
     <footer className={styles['footer']}>
       {links.map((item) => (
         <Link key={item.name} href={item.link} className={styles['footer-link']}>
-          <Image src={item.imageUrl} alt={item.name} width={30} height={30}/>
+          <Image src={item.imageUrl ?? ''} alt={item.name} width={30} height={30}/>
         </Link>
       ))}
     </footer>

@@ -2,5 +2,6 @@
     "nxConsole.nxWorkspacePath": "",
     "cSpell.words": [
         "joejohnson"
-    ]
+    ],
+    "editor.formatOnSave": true
 }

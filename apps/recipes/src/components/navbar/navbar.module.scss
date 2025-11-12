@@ -1,0 +1,21 @@
+.navbar {
+  &-list {
+    display: flex;
+    list-style: none;
+    min-height: 5vh;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 1em;
+  }
+  &-list-item {
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: large;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+}

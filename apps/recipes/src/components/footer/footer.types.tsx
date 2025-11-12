@@ -1,8 +1,4 @@
-export interface Link {
-    link: string;
-    name: string;
-    imageUrl: string;
-}
+import { Link } from "../../shared/link.model";
 
 export interface FooterProps {
     links: Link[];
