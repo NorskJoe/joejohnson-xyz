@@ -42,7 +42,6 @@ model IngredientMeasurement {
   abbreviation String?
   type         MeasurementType @default(OTHER)
   notes        String?
-  createdAt    DateTime        @default(now())
   ingredients  Ingredient[]
 }
 
