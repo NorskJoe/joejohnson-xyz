@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { fetchRecipes } from '../../actions/fetch';
+import { fetchRecipes } from '../../actions/get';
 
 const RecipesLandingPage = async () => {
   const data = await fetchRecipes();
@@ -8,14 +8,14 @@ const RecipesLandingPage = async () => {
     <div>
       <h1>Recipes</h1>
       <ul>
-        {data.map((recipe: any) => (
+        {data.map((recipe) => (
           <li key={recipe.id}>
             <Link
-              href={`/recipes/${recipe.name
+              href={`/recipes/${recipe.title
                 .toLowerCase()
                 .replaceAll(' ', '-')}`}
             >
-              {recipe.name}
+              {recipe.title}
             </Link>
           </li>
         ))}

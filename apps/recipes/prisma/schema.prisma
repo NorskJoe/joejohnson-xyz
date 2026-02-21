@@ -6,15 +6,16 @@
 
 generator client {
   provider = "prisma-client"
+  output   = "generated/client"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
 }
 
 model Recipe {
-  id                String       @id @default(auto()) @map("_id") @db.ObjectId
-  title             String
+  id                Int          @id @default(autoincrement())
+  title             String       @unique
   description       String?
   servings          Int?
   prepTimeInMinutes Int?
@@ -25,19 +26,19 @@ model Recipe {
 }
 
 model Ingredient {
-  id            String                 @id @default(auto()) @map("_id") @db.ObjectId
+  id            Int                    @id @default(autoincrement())
   name          String
   amount        Float?
   measurement   IngredientMeasurement? @relation(fields: [measurementId], references: [id])
-  measurementId String?                @db.ObjectId
+  measurementId Int?
   recipe        Recipe                 @relation(fields: [recipeId], references: [id])
-  recipeId      String                 @db.ObjectId
+  recipeId      Int
   notes         String?
   position      Int? // ordering within the recipe
 }
 
 model IngredientMeasurement {
-  id           String          @id @default(auto()) @map("_id") @db.ObjectId
+  id           Int             @id @default(autoincrement())
   name         String
   abbreviation String?
   type         MeasurementType @default(OTHER)
