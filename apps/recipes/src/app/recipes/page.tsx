@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { fetchRecipes } from '../../actions/actions';
+import { fetchRecipes } from '../../actions/fetch';
 
 const RecipesLandingPage = async () => {
   const data = await fetchRecipes();

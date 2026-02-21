@@ -1,4 +1,4 @@
-import { fetchRecipeByName } from '../../../actions/actions';
+import { fetchRecipeByName } from '../../../actions/fetch';
 
 interface RecipeProps {
   // params is next.js dynamic route params
