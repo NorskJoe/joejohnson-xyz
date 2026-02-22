@@ -3,7 +3,14 @@
 import { prisma } from '../libs/db';
 
 export const fetchRecipes = async () => {
-    const results = await prisma.recipe.findMany();
+    const results = await prisma.recipe.findMany({
+        orderBy: {
+            title: 'asc'
+        },
+        // TODO: implement pagination
+        take: 10,
+        skip: 0
+    });
     if (results.length > 0) {
         return results;
     } else {
