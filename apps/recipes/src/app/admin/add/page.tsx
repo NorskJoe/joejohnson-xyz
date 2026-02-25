@@ -12,7 +12,7 @@ const formSchema = z.object({
   ingredients: z.array(
     z.object({
       name: z.string(),
-      quantity: z.number(),
+      quantity: z.coerce.number(),
       measurement: z.enum(MeasurementType),
     })
   ),
@@ -46,7 +46,7 @@ const AddRecipePage = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.warn('submittedL ', data);
+    console.warn('submitted ', data);
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('description', data.description);

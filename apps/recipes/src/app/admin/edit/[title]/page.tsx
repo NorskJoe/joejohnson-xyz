@@ -18,7 +18,7 @@ const formSchema = z.object({
   ingredients: z.array(
     z.object({
       ingredient: z.string(),
-      quantity: z.number(),
+      quantity: z.coerce.number(),
       measurement: z.enum(MeasurementType),
     })
   ),
