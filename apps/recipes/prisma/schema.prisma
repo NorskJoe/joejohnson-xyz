@@ -20,18 +20,18 @@ model Recipe {
   servings          Int?
   prepTimeInMinutes Int?
   cookTimeInMinutes Int?
-  steps             String[]     @default([])
+  instructions      String[]     @default([])
   tags              String[]     @default([])
   ingredients       Ingredient[]
 }
 
 model Ingredient {
-  id            Int                    @id @default(autoincrement())
+  id            Int                   @id @default(autoincrement())
   name          String
-  amount        Float?
-  measurement   IngredientMeasurement? @relation(fields: [measurementId], references: [id])
-  measurementId Int?
-  recipe        Recipe                 @relation(fields: [recipeId], references: [id])
+  amount        Float
+  measurement   IngredientMeasurement @relation(fields: [measurementId], references: [id])
+  measurementId Int
+  recipe        Recipe                @relation(fields: [recipeId], references: [id])
   recipeId      Int
   notes         String?
   position      Int? // ordering within the recipe

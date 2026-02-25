@@ -7,9 +7,6 @@ const AdminLandingPage = () => {
       <Link href="/admin/add" passHref>
         <button>Add Recipe</button>
       </Link>
-      <Link href="/admin/edit" passHref>
-        <button>Edit Recipe</button>
-      </Link>
     </div>
   );
 };

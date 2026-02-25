@@ -321,9 +321,9 @@ export type IngredientMeasurementUncheckedUpdateManyInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type IngredientMeasurementNullableScalarRelationFilter = {
-  is?: Prisma.IngredientMeasurementWhereInput | null
-  isNot?: Prisma.IngredientMeasurementWhereInput | null
+export type IngredientMeasurementScalarRelationFilter = {
+  is?: Prisma.IngredientMeasurementWhereInput
+  isNot?: Prisma.IngredientMeasurementWhereInput
 }
 
 export type IngredientMeasurementCountOrderByAggregateInput = {
@@ -364,12 +364,10 @@ export type IngredientMeasurementCreateNestedOneWithoutIngredientsInput = {
   connect?: Prisma.IngredientMeasurementWhereUniqueInput
 }
 
-export type IngredientMeasurementUpdateOneWithoutIngredientsNestedInput = {
+export type IngredientMeasurementUpdateOneRequiredWithoutIngredientsNestedInput = {
   create?: Prisma.XOR<Prisma.IngredientMeasurementCreateWithoutIngredientsInput, Prisma.IngredientMeasurementUncheckedCreateWithoutIngredientsInput>
   connectOrCreate?: Prisma.IngredientMeasurementCreateOrConnectWithoutIngredientsInput
   upsert?: Prisma.IngredientMeasurementUpsertWithoutIngredientsInput
-  disconnect?: Prisma.IngredientMeasurementWhereInput | boolean
-  delete?: Prisma.IngredientMeasurementWhereInput | boolean
   connect?: Prisma.IngredientMeasurementWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.IngredientMeasurementUpdateToOneWithWhereWithoutIngredientsInput, Prisma.IngredientMeasurementUpdateWithoutIngredientsInput>, Prisma.IngredientMeasurementUncheckedUpdateWithoutIngredientsInput>
 }

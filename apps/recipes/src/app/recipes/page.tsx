@@ -17,6 +17,7 @@ const RecipesLandingPage = async () => {
             >
               {recipe.title}
             </Link>
+            <Link href={`/admin/edit/${recipe.title}`}>Edit Recipe</Link>
           </li>
         ))}
       </ul>
