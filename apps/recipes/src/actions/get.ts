@@ -25,7 +25,12 @@ export const fetchRecipe = async (name: string) => {
       slug: titleSlugify(name),
     },
     include: {
-      recipeIngredients: true,
+      recipeIngredients: {
+        include: {
+          ingredient: true,
+          measurement: true,
+        },
+      },
     },
   });
   if (!result) {

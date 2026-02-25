@@ -41,7 +41,7 @@ const EditRecipePage = (props: EditRecipePageProps) => {
           title: data.title,
           description: data.description || '',
           ingredients: data.recipeIngredients.map((ingredient) => ({
-            ingredient: ingredient,
+            ingredient: ingredient.ingredient.name,
             quantity: ingredient.quantity,
             measurement: ingredient.measurement.type as MeasurementType,
           })),
