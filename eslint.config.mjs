@@ -18,7 +18,7 @@ export default [
           depConstraints: [
             {
               sourceTag: 'type:website',
-              onlyDependOnLibsWithTags: ['type:package','@prisma/*'],
+              onlyDependOnLibsWithTags: ['type:package','@prisma/*','zod'],
             },
           ],
         },

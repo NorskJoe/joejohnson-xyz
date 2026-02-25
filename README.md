@@ -71,4 +71,4 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 - use `npx prisma studio` to open GUI
 - PORT:5432
 
-`npx start recipes`
+`nx dev recipes`
