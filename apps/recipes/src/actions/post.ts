@@ -1,13 +1,7 @@
 'use server';
 
 import { prisma } from '../libs/db';
-import { MeasurementType } from '../shared/measurements.model';
-
-function stringToMeasurementType(str: string): MeasurementType {
-  return MeasurementType[
-    str as keyof typeof MeasurementType
-  ] as MeasurementType;
-}
+import { stringToMeasurementType } from '../libs/utils';
 
 export const createRecipe = async (formData: FormData) => {
   const result = await prisma.recipe.create({

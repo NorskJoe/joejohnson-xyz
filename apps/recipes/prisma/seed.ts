@@ -1,18 +1,14 @@
-import { MeasurementType } from '../prisma/generated/client/enums';
 import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../prisma/generated/client/client';
+import { stringToMeasurementType } from '../src/libs/utils';
 
-function stringToMeasurementType(str: string): MeasurementType {
-  return MeasurementType[
-    str as keyof typeof MeasurementType
-  ] as MeasurementType;
-}
 const connectionString = `${process.env.DATABASE_URL}`;
 const adapter = new PrismaPg({ connectionString: connectionString });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
+  // Seed ingredient measurements
   await prisma.ingredientMeasurement.upsert({
     where: { type: stringToMeasurementType('GRAMS') },
     update: {},
