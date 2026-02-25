@@ -1,15 +1,13 @@
 'use server';
 
 import { prisma } from '../libs/db';
-import { stringToMeasurementType } from '../libs/utils';
+import { stringToMeasurementType, titleSlugify } from '../libs/utils';
 
 export const createRecipe = async (formData: FormData) => {
   const result = await prisma.recipe.create({
     data: {
       title: formData.get('title') as string,
-      slug: (formData.get('title') as string)
-        .toLowerCase()
-        .replace(/\s+/g, '-'),
+      slug: titleSlugify(formData.get('title') as string),
       description: formData.get('description') as string,
       recipeIngredients: {
         create: JSON.parse(formData.get('ingredients') as string).map(

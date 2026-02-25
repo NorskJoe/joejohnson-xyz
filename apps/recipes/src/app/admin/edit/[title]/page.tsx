@@ -40,10 +40,10 @@ const EditRecipePage = (props: EditRecipePageProps) => {
         setRecipe({
           title: data.title,
           description: data.description || '',
-          ingredients: data.ingredients.map((ingredient) => ({
-            ingredient: ingredient.name,
-            quantity: ingredient.amount,
-            measurement: ingredient.measurement as MeasurementType,
+          ingredients: data.recipeIngredients.map((ingredient) => ({
+            ingredient: ingredient,
+            quantity: ingredient.quantity,
+            measurement: ingredient.measurement.type as MeasurementType,
           })),
           instructions: data.instructions,
           prepTimeInMinutes: data.prepTimeInMinutes || 0,

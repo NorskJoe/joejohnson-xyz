@@ -1,6 +1,7 @@
 'use server';
 
 import { prisma } from '../libs/db';
+import { titleSlugify } from '../libs/utils';
 
 export const fetchRecipes = async () => {
   const results = await prisma.recipe.findMany({
@@ -21,7 +22,7 @@ export const fetchRecipes = async () => {
 export const fetchRecipe = async (name: string) => {
   const result = await prisma.recipe.findUnique({
     where: {
-      slug: name.replace(/\s+/g, '-').toLowerCase(),
+      slug: titleSlugify(name),
     },
     include: {
       recipeIngredients: true,
