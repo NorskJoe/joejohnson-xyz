@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import { fetchRecipes } from '../../actions/fetch';
+import { fetchRecipes } from '../../actions/get';
+import { titleSlugify } from '../../libs/utils';
 
 const RecipesLandingPage = async () => {
   const data = await fetchRecipes();
@@ -8,14 +9,13 @@ const RecipesLandingPage = async () => {
     <div>
       <h1>Recipes</h1>
       <ul>
-        {data.map((recipe: any) => (
+        {data.map((recipe) => (
           <li key={recipe.id}>
-            <Link
-              href={`/recipes/${recipe.name
-                .toLowerCase()
-                .replaceAll(' ', '-')}`}
-            >
-              {recipe.name}
+            <Link href={`/recipes/${titleSlugify(recipe.title)}`}>
+              {recipe.title}
+            </Link>
+            <Link href={`/admin/edit/${titleSlugify(recipe.title)}`}>
+              Edit Recipe
             </Link>
           </li>
         ))}
