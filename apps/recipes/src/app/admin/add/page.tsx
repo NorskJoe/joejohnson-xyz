@@ -4,7 +4,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createRecipe } from '@actions/post';
-import { MeasurementType } from '@prisma/enums';
+import { MeasurementType } from '@generated/enums';
 
 const formSchema = z.object({
   title: z.string(),

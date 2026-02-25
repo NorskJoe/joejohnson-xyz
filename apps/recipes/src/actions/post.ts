@@ -15,7 +15,10 @@ export const createRecipe = async (formData: FormData) => {
             quantity: ing.quantity,
             ingredient: { create: { name: ing.name } },
             measurement: {
-              create: { type: stringToMeasurementType(ing.measurement) },
+              connectOrCreate: {
+                where: { type: stringToMeasurementType(ing.measurement) },
+                create: { type: stringToMeasurementType(ing.measurement) },
+              },
             },
           })
         ),

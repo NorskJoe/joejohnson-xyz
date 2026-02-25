@@ -1,11 +1,11 @@
 'use client';
 
-import { MeasurementType } from '../../../../shared/measurements.model';
 import z from 'zod';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
 import { fetchRecipe } from '@actions/get';
+import { MeasurementType } from '@generated/enums';
 
 interface EditRecipePageProps {
   // params is next.js dynamic route params
@@ -40,10 +40,10 @@ const EditRecipePage = (props: EditRecipePageProps) => {
         setRecipe({
           title: data.title,
           description: data.description || '',
-          ingredients: data.recipeIngredients.map((ingredient) => ({
-            ingredient: ingredient.ingredient.name,
-            quantity: ingredient.quantity,
-            measurement: ingredient.measurement.type as MeasurementType,
+          ingredients: data.recipeIngredients.map((recipeIngredient) => ({
+            ingredient: recipeIngredient.ingredient.name,
+            quantity: recipeIngredient.quantity,
+            measurement: recipeIngredient.measurement.type as MeasurementType,
           })),
           instructions: data.instructions,
           prepTimeInMinutes: data.prepTimeInMinutes || 0,
@@ -65,9 +65,12 @@ const EditRecipePage = (props: EditRecipePageProps) => {
       return {
         title: recipe?.title || '',
         description: recipe?.description || '',
-        ingredients: [
-          { ingredient: '', quantity: 0, measurement: MeasurementType.OTHER },
-        ],
+        ingredients:
+          recipe?.recipeIngredients.map((ri) => ({
+            ingredient: ri.ingredient.name,
+            quantity: ri.quantity,
+            measurement: ri.measurement.type as MeasurementType,
+          })) || [],
         instructions: recipe?.instructions || [''],
         prepTimeInMinutes: recipe?.prepTimeInMinutes || 0,
         cookTimeInMinutes: recipe?.cookTimeInMinutes || 0,

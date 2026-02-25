@@ -31,7 +31,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@actions/*": ["src/actions/*"],
-      "@prisma/*": ["prisma/generated/client/*"],
+      "@generated/*": ["prisma/generated/client/*"],
       "@libs/*": ["src/libs/*"],
     }
   },
