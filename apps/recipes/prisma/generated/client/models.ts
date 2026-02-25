@@ -11,4 +11,5 @@
 export type * from './models/Recipe'
 export type * from './models/Ingredient'
 export type * from './models/IngredientMeasurement'
+export type * from './models/RecipeIngredient'
 export type * from './commonInputTypes'

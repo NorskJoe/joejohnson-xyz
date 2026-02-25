@@ -1,4 +1,4 @@
-import { fetchRecipeByName } from '../../../actions/get';
+import { fetchRecipe } from '../../../actions/get';
 
 interface RecipeProps {
   // params is next.js dynamic route params
@@ -7,7 +7,7 @@ interface RecipeProps {
 
 const RecipeDetailPage = async ({ params }: RecipeProps) => {
   const { title } = await params;
-  const recipe = await fetchRecipeByName(title);
+  const recipe = await fetchRecipe(title);
   const recipeName = recipe?.title || 'Recipe Not Found';
 
   return <div>Recipe: {recipeName}</div>;

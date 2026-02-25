@@ -53,7 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Recipe: 'Recipe',
   Ingredient: 'Ingredient',
-  IngredientMeasurement: 'IngredientMeasurement'
+  IngredientMeasurement: 'IngredientMeasurement',
+  RecipeIngredient: 'RecipeIngredient'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -75,6 +76,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   description: 'description',
   servings: 'servings',
   prepTimeInMinutes: 'prepTimeInMinutes',
@@ -88,12 +90,7 @@ export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof 
 
 export const IngredientScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  amount: 'amount',
-  measurementId: 'measurementId',
-  recipeId: 'recipeId',
-  notes: 'notes',
-  position: 'position'
+  name: 'name'
 } as const
 
 export type IngredientScalarFieldEnum = (typeof IngredientScalarFieldEnum)[keyof typeof IngredientScalarFieldEnum]
@@ -101,13 +98,21 @@ export type IngredientScalarFieldEnum = (typeof IngredientScalarFieldEnum)[keyof
 
 export const IngredientMeasurementScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  abbreviation: 'abbreviation',
-  type: 'type',
-  notes: 'notes'
+  type: 'type'
 } as const
 
 export type IngredientMeasurementScalarFieldEnum = (typeof IngredientMeasurementScalarFieldEnum)[keyof typeof IngredientMeasurementScalarFieldEnum]
+
+
+export const RecipeIngredientScalarFieldEnum = {
+  id: 'id',
+  recipeId: 'recipeId',
+  ingredientId: 'ingredientId',
+  measurementId: 'measurementId',
+  quantity: 'quantity'
+} as const
+
+export type RecipeIngredientScalarFieldEnum = (typeof RecipeIngredientScalarFieldEnum)[keyof typeof RecipeIngredientScalarFieldEnum]
 
 
 export const SortOrder = {

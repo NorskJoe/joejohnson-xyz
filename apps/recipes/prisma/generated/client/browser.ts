@@ -32,3 +32,8 @@ export type Ingredient = Prisma.IngredientModel
  * 
  */
 export type IngredientMeasurement = Prisma.IngredientMeasurementModel
+/**
+ * Model RecipeIngredient
+ * 
+ */
+export type RecipeIngredient = Prisma.RecipeIngredientModel

@@ -13,21 +13,22 @@ export const createRecipe = async (formData: FormData) => {
   const result = await prisma.recipe.create({
     data: {
       title: formData.get('title') as string,
+      slug: (formData.get('title') as string)
+        .toLowerCase()
+        .replace(/\s+/g, '-'),
       description: formData.get('description') as string,
-      ingredients: {
-        create: (
-          JSON.parse(formData.get('ingredients') as string) as {
-            ingredient: string;
-            quantity: number;
-            measurement: string;
-          }[]
-        ).map((ing) => ({
-          name: ing.ingredient,
-          amount: ing.quantity,
-          measurement: stringToMeasurementType(ing.measurement),
-        })),
+      recipeIngredients: {
+        create: JSON.parse(formData.get('ingredients') as string).map(
+          (ing: { name: string; quantity: number; measurement: string }) => ({
+            quantity: ing.quantity,
+            ingredient: { create: { name: ing.name } },
+            measurement: {
+              create: { type: stringToMeasurementType(ing.measurement) },
+            },
+          })
+        ),
       },
-      steps: (formData.get('instructions') as string)
+      instructions: (formData.get('instructions') as string)
         .split(',')
         .map((s) => s.trim()),
       prepTimeInMinutes: parseInt(formData.get('prepTime') as string),

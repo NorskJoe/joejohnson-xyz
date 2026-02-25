@@ -11,7 +11,7 @@ const formSchema = z.object({
   description: z.string(),
   ingredients: z.array(
     z.object({
-      ingredient: z.string(),
+      name: z.string(),
       quantity: z.number(),
       measurement: z.enum(MeasurementType),
     })
@@ -30,7 +30,7 @@ const AddRecipePage = () => {
       title: '',
       description: '',
       ingredients: [
-        { ingredient: '', quantity: 0, measurement: MeasurementType.OTHER },
+        { name: '', quantity: 0, measurement: MeasurementType.OTHER },
       ],
       instructions: '',
       prepTime: 0,
@@ -46,6 +46,7 @@ const AddRecipePage = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.warn('submittedL ', data);
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('description', data.description);
@@ -80,7 +81,7 @@ const AddRecipePage = () => {
       {fields.map((ing, index) => (
         <div key={ing.id}>
           <input
-            {...register(`ingredients.${index}.ingredient`)}
+            {...register(`ingredients.${index}.name`)}
             type="text"
             placeholder="Ingredient name"
           />
@@ -133,7 +134,7 @@ const AddRecipePage = () => {
         type="button"
         onClick={() =>
           append({
-            ingredient: '',
+            name: '',
             quantity: 0,
             measurement: MeasurementType.OTHER,
           })

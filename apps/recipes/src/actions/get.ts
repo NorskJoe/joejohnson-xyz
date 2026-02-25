@@ -18,17 +18,13 @@ export const fetchRecipes = async () => {
   }
 };
 
-export const fetchRecipeByName = async (name: string) => {
+export const fetchRecipe = async (name: string) => {
   const result = await prisma.recipe.findUnique({
     where: {
-      title: name,
+      slug: name.replace(/\s+/g, '-').toLowerCase(),
     },
     include: {
-      ingredients: {
-        include: {
-          measurement: true,
-        },
-      },
+      recipeIngredients: true,
     },
   });
   if (!result) {
