@@ -1,7 +1,7 @@
+import { fetchRecipes } from '@actions/get';
+import { titleSlugify } from '@libs/utils';
 import Link from 'next/link';
 import React from 'react';
-import { fetchRecipes } from '../../actions/get';
-import { titleSlugify } from '../../libs/utils';
 
 const RecipesLandingPage = async () => {
   const data = await fetchRecipes();

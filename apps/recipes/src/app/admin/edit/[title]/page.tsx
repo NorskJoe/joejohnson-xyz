@@ -2,10 +2,10 @@
 
 import { MeasurementType } from '../../../../shared/measurements.model';
 import z from 'zod';
-import { fetchRecipe } from '../../../../actions/get';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
+import { fetchRecipe } from '@actions/get';
 
 interface EditRecipePageProps {
   // params is next.js dynamic route params

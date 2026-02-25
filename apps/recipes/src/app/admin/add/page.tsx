@@ -1,10 +1,10 @@
 'use client';
 
 import { useFieldArray, useForm } from 'react-hook-form';
-import { createRecipe } from '../../../actions/post';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { MeasurementType } from '../../../shared/measurements.model';
+import { createRecipe } from '@actions/post';
+import { MeasurementType } from '@prisma/enums';
 
 const formSchema = z.object({
   title: z.string(),

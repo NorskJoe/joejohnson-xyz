@@ -26,7 +26,14 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@actions/*": ["src/actions/*"],
+      "@prisma/*": ["prisma/generated/client/*"],
+      "@libs/*": ["src/libs/*"],
+    }
   },
   "include": [
     "**/*.js",

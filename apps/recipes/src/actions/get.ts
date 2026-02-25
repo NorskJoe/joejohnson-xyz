@@ -1,7 +1,7 @@
 'use server';
 
-import { prisma } from '../libs/db';
-import { titleSlugify } from '../libs/utils';
+import { prisma } from '@libs/db';
+import { titleSlugify } from '@libs/utils';
 
 export const fetchRecipes = async () => {
   const results = await prisma.recipe.findMany({

@@ -1,7 +1,7 @@
 'use server';
 
-import { prisma } from '../libs/db';
-import { stringToMeasurementType, titleSlugify } from '../libs/utils';
+import { prisma } from '@libs/db';
+import { titleSlugify, stringToMeasurementType } from '@libs/utils';
 
 export const createRecipe = async (formData: FormData) => {
   const result = await prisma.recipe.create({
