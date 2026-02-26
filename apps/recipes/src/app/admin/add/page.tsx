@@ -24,12 +24,12 @@ const formSchema = z.object({
 });
 
 const AddRecipePage = () => {
-  const { register, control, handleSubmit } = useForm({
+  const { register, control, handleSubmit, reset } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: '',
       description: '',
-      instructions: [{ content: 'one' }, { content: 'two' }],
+      instructions: [{ content: '' }],
       ingredients: [
         { name: '', quantity: 0, measurement: MeasurementType.OTHER },
       ],
@@ -77,6 +77,7 @@ const AddRecipePage = () => {
       Object.fromEntries(formData.entries())
     );
     await createRecipe(formData);
+    reset();
   };
 
   return (

@@ -60,7 +60,7 @@ const EditRecipePage = (props: EditRecipePageProps) => {
     loadRecipe();
   }, []);
 
-  const { register, control, handleSubmit } = useForm({
+  const { register, control, handleSubmit, reset } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: async () => {
       const { title } = await props.params;
@@ -119,7 +119,27 @@ const EditRecipePage = (props: EditRecipePageProps) => {
     formData.append('servings', data.servings.toString());
     formData.append('tags', data.tags);
     console.warn('formData ', [...formData]);
-    await updateRecipe(formData);
+    const updatedRecipe = await updateRecipe(formData);
+    reset({
+      title: updatedRecipe.title,
+      description: updatedRecipe.description || '',
+      ingredients:
+        updatedRecipe.recipeIngredients.map((ri) => ({
+          name: ri.ingredient.name,
+          quantity: ri.quantity,
+          measurement: ri.measurement.type as MeasurementType,
+        })) || [],
+      instructions: updatedRecipe.instructions.map((instruction) => ({
+        content: instruction,
+      })),
+      prepTimeInMinutes: updatedRecipe.prepTimeInMinutes || 0,
+      cookTimeInMinutes: updatedRecipe.cookTimeInMinutes || 0,
+      servings: updatedRecipe.servings || 0,
+      tags:
+        typeof updatedRecipe.tags === 'string'
+          ? updatedRecipe.tags
+          : updatedRecipe.tags.join(', '),
+    });
   };
 
   return (

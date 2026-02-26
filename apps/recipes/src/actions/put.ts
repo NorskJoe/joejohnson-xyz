@@ -11,6 +11,14 @@ export const updateRecipe = async (formData: FormData) => {
   });
   const result = await prisma.recipe.update({
     where: { slug: slug },
+    include: {
+      recipeIngredients: {
+        include: {
+          ingredient: true,
+          measurement: true,
+        },
+      },
+    },
     data: {
       title: formData.get('title') as string,
       slug: slug,
