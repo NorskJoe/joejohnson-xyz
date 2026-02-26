@@ -5,18 +5,18 @@ import { useRouter } from 'next/navigation';
 
 const ClientButton = (props: {
   buttonText: string;
-  action: 'delete' | 'edit' | 'create';
+  mode: 'delete' | 'edit' | 'create';
   recordId: string;
   rerender?: boolean;
 }) => {
   const router = useRouter();
 
   const action =
-    props.action === 'delete'
+    props.mode === 'delete'
       ? deleteRecipe
       : // TODO: implement edit and create actions if needed or refactor client button
         (id: string) => {
-          console.log(`Action ${props.action} on record ${id}`);
+          console.log(`Action ${props.mode} on record ${id}`);
         };
 
   const handleClick = () => {

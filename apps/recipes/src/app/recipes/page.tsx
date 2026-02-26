@@ -20,7 +20,7 @@ const RecipesLandingPage = async () => {
             </Link>
             <ClientButton
               buttonText="Delete Recipe"
-              action="delete"
+              mode="delete"
               recordId={recipe.slug}
               rerender={true}
             />
