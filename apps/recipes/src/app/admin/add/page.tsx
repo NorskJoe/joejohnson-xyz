@@ -7,24 +7,35 @@ import { createRecipe } from '@actions/post';
 import { MeasurementType } from '@generated/enums';
 
 const formSchema = z.object({
-  title: z.string(),
+  title: z.string().min(1, 'Title is required'),
   description: z.string(),
-  instructions: z.array(z.object({ content: z.string() })), // no array of primitive allowed
-  ingredients: z.array(
-    z.object({
-      name: z.string(),
-      quantity: z.coerce.number(),
-      measurement: z.enum(MeasurementType),
-    })
-  ),
-  prepTime: z.coerce.number(),
-  cookTime: z.coerce.number(),
-  servings: z.coerce.number(),
+  ingredients: z
+    .array(
+      z.object({
+        name: z.string().min(1, 'Ingredient name is required'),
+        quantity: z.coerce.number(),
+        measurement: z.enum(MeasurementType),
+      })
+    )
+    .min(1, 'At least one ingredient is required'),
+  // no array of primitive allowed
+  instructions: z
+    .array(z.object({ content: z.string() }))
+    .min(1, 'At least one instruction is required'),
+  prepTimeInMinutes: z.coerce.number().min(0, 'Preparation time must be set'),
+  cookTimeInMinutes: z.coerce.number().min(0, 'Cooking time must be set'),
+  servings: z.coerce.number().min(1, 'Servings must be at least 1'),
   tags: z.string(),
 });
 
 const AddRecipePage = () => {
-  const { register, control, handleSubmit, reset } = useForm({
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: '',
@@ -33,8 +44,8 @@ const AddRecipePage = () => {
       ingredients: [
         { name: '', quantity: 0, measurement: MeasurementType.OTHER },
       ],
-      prepTime: 0,
-      cookTime: 0,
+      prepTimeInMinutes: 0,
+      cookTimeInMinutes: 0,
       servings: 0,
       tags: '',
     },
@@ -68,8 +79,8 @@ const AddRecipePage = () => {
       'instructions',
       data.instructions.map((i) => i.content).join(',')
     );
-    formData.append('prepTime', data.prepTime.toString());
-    formData.append('cookTime', data.cookTime.toString());
+    formData.append('prepTimeInMinutes', data.prepTimeInMinutes.toString());
+    formData.append('cookTimeInMinutes', data.cookTimeInMinutes.toString());
     formData.append('servings', data.servings.toString());
     formData.append('tags', data.tags);
     console.warn(
@@ -89,6 +100,7 @@ const AddRecipePage = () => {
         name="title"
         placeholder="Recipe Title"
       />
+      {errors.title?.message && <p>{errors.title.message}</p>}
       <textarea
         {...register('description')}
         name="description"
@@ -101,6 +113,9 @@ const AddRecipePage = () => {
             type="text"
             placeholder="Ingredient name"
           />
+          {errors.ingredients?.[index]?.name?.message && (
+            <p>{errors.ingredients[index].name.message}</p>
+          )}
           <input
             {...register(`ingredients.${index}.quantity`)}
             type="number"
@@ -122,6 +137,9 @@ const AddRecipePage = () => {
             type="text"
             placeholder={`Step ${index + 1}`}
           />
+          {errors.instructions?.[index]?.content?.message && (
+            <p>{errors.instructions[index].content.message}</p>
+          )}
         </div>
       ))}
       <button type="button" onClick={() => appendInstruction({ content: '' })}>
@@ -134,23 +152,30 @@ const AddRecipePage = () => {
         Remove Last Instruction
       </button>
       <input
-        {...register('prepTime')}
+        {...register('prepTimeInMinutes')}
         type="number"
-        name="prepTime"
+        name="prepTimeInMinutes"
         placeholder="Preparation Time (minutes)"
       />
+      {errors.prepTimeInMinutes?.message && (
+        <p>{errors.prepTimeInMinutes.message}</p>
+      )}
       <input
-        {...register('cookTime')}
+        {...register('cookTimeInMinutes')}
         type="number"
-        name="cookTime"
+        name="cookTimeInMinutes"
         placeholder="Cooking Time (minutes)"
       />
+      {errors.cookTimeInMinutes?.message && (
+        <p>{errors.cookTimeInMinutes.message}</p>
+      )}
       <input
         {...register('servings')}
         type="number"
         name="servings"
         placeholder="Servings"
       />
+      {errors.servings?.message && <p>{errors.servings.message}</p>}
       <input
         {...register('tags')}
         type="text"

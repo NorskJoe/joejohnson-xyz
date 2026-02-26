@@ -455,9 +455,9 @@ export type RecipeSumOrderByAggregateInput = {
   cookTimeInMinutes?: Prisma.SortOrder
 }
 
-export type RecipeScalarRelationFilter = {
-  is?: Prisma.RecipeWhereInput
-  isNot?: Prisma.RecipeWhereInput
+export type RecipeNullableScalarRelationFilter = {
+  is?: Prisma.RecipeWhereInput | null
+  isNot?: Prisma.RecipeWhereInput | null
 }
 
 export type RecipeCreateinstructionsInput = {
@@ -508,10 +508,12 @@ export type RecipeCreateNestedOneWithoutRecipeIngredientsInput = {
   connect?: Prisma.RecipeWhereUniqueInput
 }
 
-export type RecipeUpdateOneRequiredWithoutRecipeIngredientsNestedInput = {
+export type RecipeUpdateOneWithoutRecipeIngredientsNestedInput = {
   create?: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeIngredientsInput, Prisma.RecipeUncheckedCreateWithoutRecipeIngredientsInput>
   connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutRecipeIngredientsInput
   upsert?: Prisma.RecipeUpsertWithoutRecipeIngredientsInput
+  disconnect?: Prisma.RecipeWhereInput | boolean
+  delete?: Prisma.RecipeWhereInput | boolean
   connect?: Prisma.RecipeWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeUpdateToOneWithWhereWithoutRecipeIngredientsInput, Prisma.RecipeUpdateWithoutRecipeIngredientsInput>, Prisma.RecipeUncheckedUpdateWithoutRecipeIngredientsInput>
 }
