@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
 import { fetchRecipe } from '@actions/get';
 import { MeasurementType } from '@generated/enums';
+import { updateRecipe } from '@actions/put';
 
 interface EditRecipePageProps {
   // params is next.js dynamic route params
@@ -17,12 +18,12 @@ const formSchema = z.object({
   description: z.string(),
   ingredients: z.array(
     z.object({
-      ingredient: z.string(),
+      name: z.string(),
       quantity: z.coerce.number(),
       measurement: z.enum(MeasurementType),
     })
   ),
-  instructions: z.array(z.string()),
+  instructions: z.array(z.object({ content: z.string() })), // no array of primitive allowed
   prepTimeInMinutes: z.coerce.number(),
   cookTimeInMinutes: z.coerce.number(),
   servings: z.coerce.number(),
@@ -41,11 +42,13 @@ const EditRecipePage = (props: EditRecipePageProps) => {
           title: data.title,
           description: data.description || '',
           ingredients: data.recipeIngredients.map((recipeIngredient) => ({
-            ingredient: recipeIngredient.ingredient.name,
+            name: recipeIngredient.ingredient.name,
             quantity: recipeIngredient.quantity,
             measurement: recipeIngredient.measurement.type as MeasurementType,
           })),
-          instructions: data.instructions,
+          instructions: data.instructions.map((instruction) => ({
+            content: instruction,
+          })),
           prepTimeInMinutes: data.prepTimeInMinutes || 0,
           cookTimeInMinutes: data.cookTimeInMinutes || 0,
           servings: data.servings || 0,
@@ -67,11 +70,14 @@ const EditRecipePage = (props: EditRecipePageProps) => {
         description: recipe?.description || '',
         ingredients:
           recipe?.recipeIngredients.map((ri) => ({
-            ingredient: ri.ingredient.name,
+            name: ri.ingredient.name,
             quantity: ri.quantity,
             measurement: ri.measurement.type as MeasurementType,
           })) || [],
-        instructions: recipe?.instructions || [''],
+        instructions:
+          recipe?.instructions.map((instruction) => ({
+            content: instruction,
+          })) || [],
         prepTimeInMinutes: recipe?.prepTimeInMinutes || 0,
         cookTimeInMinutes: recipe?.cookTimeInMinutes || 0,
         servings: recipe?.servings || 0,
@@ -80,15 +86,46 @@ const EditRecipePage = (props: EditRecipePageProps) => {
     },
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: ingredientFields,
+    append: appendIngredient,
+    remove: removeIngredient,
+  } = useFieldArray({
     control,
     name: 'ingredients',
   });
 
+  const {
+    fields: instructionFields,
+    append: appendInstruction,
+    remove: removeInstruction,
+  } = useFieldArray({
+    control,
+    name: 'instructions',
+  });
+
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.warn('submitted edit ', data);
+    const formData = new FormData();
+    formData.append('title', data.title);
+    formData.append('description', data.description);
+    formData.append('ingredients', JSON.stringify(data.ingredients));
+    formData.append(
+      'instructions',
+      data.instructions.map((i) => i.content).join(',')
+    );
+    formData.append('prepTime', data.prepTimeInMinutes.toString());
+    formData.append('cookTime', data.cookTimeInMinutes.toString());
+    formData.append('servings', data.servings.toString());
+    formData.append('tags', data.tags);
+    console.warn('formData ', [...formData]);
+    await updateRecipe(formData);
+  };
+
   return (
     <>
-      <div>EditRecipePage for {recipe?.title}</div>
-      <form>
+      <div>Edit Recipe Page for {recipe?.title}</div>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register('title')}
           type="text"
@@ -101,15 +138,10 @@ const EditRecipePage = (props: EditRecipePageProps) => {
           name="description"
           placeholder="Recipe Description"
         ></textarea>
-        <input
-          type="text"
-          name="ingredients"
-          placeholder="Ingredients (comma separated)"
-        />
-        {fields.map((ing, index) => (
+        {ingredientFields.map((ing, index) => (
           <div key={ing.id}>
             <input
-              {...register(`ingredients.${index}.ingredient`)}
+              {...register(`ingredients.${index}.name`)}
               type="text"
               placeholder="Ingredient name"
             />
@@ -127,12 +159,27 @@ const EditRecipePage = (props: EditRecipePageProps) => {
             </select>
           </div>
         ))}
-        <input
-          {...register('instructions')}
-          type="text"
-          name="instructions"
-          placeholder="Instructions"
-        />
+        {instructionFields.map((inst, index) => (
+          <div key={inst.id}>
+            <input
+              {...register(`instructions.${index}.content`)}
+              type="text"
+              placeholder={`Step ${index + 1}`}
+            />
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => appendInstruction({ content: '' })}
+        >
+          Add Instruction
+        </button>
+        <button
+          type="button"
+          onClick={() => removeInstruction(instructionFields.length - 1)}
+        >
+          Remove Last Instruction
+        </button>
         <input
           {...register('prepTimeInMinutes')}
           type="number"
@@ -157,12 +204,12 @@ const EditRecipePage = (props: EditRecipePageProps) => {
           name="tags"
           placeholder="Tags (comma separated)"
         />
-        <button type="submit">Add Recipe</button>
+        <button type="submit">Update Recipe</button>
         <button
           type="button"
           onClick={() =>
-            append({
-              ingredient: '',
+            appendIngredient({
+              name: '',
               quantity: 0,
               measurement: MeasurementType.OTHER,
             })
@@ -170,7 +217,10 @@ const EditRecipePage = (props: EditRecipePageProps) => {
         >
           Add Ingredient
         </button>
-        <button type="button" onClick={() => remove(fields.length - 1)}>
+        <button
+          type="button"
+          onClick={() => removeIngredient(ingredientFields.length - 1)}
+        >
           Remove Last Ingredient
         </button>
       </form>

@@ -9,8 +9,8 @@ export const fetchRecipes = async () => {
       title: 'asc',
     },
     // TODO: implement pagination
-    take: 10,
-    skip: 0,
+    // take: 10,
+    // skip: 0,
   });
   if (results.length > 0) {
     return results;
