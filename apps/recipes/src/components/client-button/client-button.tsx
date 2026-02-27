@@ -4,10 +4,11 @@ import { deleteRecipe } from '@actions/delete';
 import { useRouter } from 'next/navigation';
 
 const ClientButton = (props: {
-  buttonText: string;
+  children: React.ReactNode;
   mode: 'delete' | 'edit' | 'create';
   recordId: string;
   rerender?: boolean;
+  className?: string;
 }) => {
   const router = useRouter();
 
@@ -25,7 +26,11 @@ const ClientButton = (props: {
       router.refresh();
     }
   };
-  return <button onClick={handleClick}>{props.buttonText}</button>;
+  return (
+    <div className={props.className} onClick={handleClick}>
+      {props.children}
+    </div>
+  );
 };
 
 export default ClientButton;

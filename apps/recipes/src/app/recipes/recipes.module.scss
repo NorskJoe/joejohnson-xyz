@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40rem;
+}
+
+.recipe-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.recipe-list {
+  align-items: start;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.6rem;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.6rem;
+    &:nth-child(odd) {
+      background-color: lightgray;
+    }
+  }
+}
+
+.actions {
+  gap: 1rem;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid grey;
+  border-radius: 0.6rem;
+  padding: 0.5rem;
+  min-width: 5rem;
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

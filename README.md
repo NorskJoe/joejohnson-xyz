@@ -69,6 +69,6 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 - app routing (page, not-found, error, loading, etc)
 - DB is postgres
 - use `npx prisma studio` to open GUI
-- PORT:5432
+- Icons are from lucide-react library
 
 `nx dev recipes`
