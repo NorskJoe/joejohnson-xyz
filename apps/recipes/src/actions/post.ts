@@ -5,6 +5,11 @@ import { titleSlugify, stringToMeasurementType } from '@libs/utils';
 
 export const createRecipe = async (formData: FormData) => {
   const result = await prisma.recipe.create({
+    include: {
+      recipeIngredients: {
+        include: { ingredient: true, measurement: true },
+      },
+    },
     data: {
       title: formData.get('title') as string,
       slug: titleSlugify(formData.get('title') as string),

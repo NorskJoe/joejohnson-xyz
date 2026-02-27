@@ -10,14 +10,14 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
   // Seed ingredient measurements
   await prisma.ingredientMeasurement.upsert({
-    where: { type: stringToMeasurementType('GRAMS') },
+    where: { type: stringToMeasurementType('GRAM') },
     update: {},
-    create: { type: stringToMeasurementType('GRAMS') },
+    create: { type: stringToMeasurementType('GRAM') },
   });
   await prisma.ingredientMeasurement.upsert({
-    where: { type: stringToMeasurementType('KGS') },
+    where: { type: stringToMeasurementType('KG') },
     update: {},
-    create: { type: stringToMeasurementType('KGS') },
+    create: { type: stringToMeasurementType('KG') },
   });
   await prisma.ingredientMeasurement.upsert({
     where: { type: stringToMeasurementType('TBSP') },
@@ -43,6 +43,11 @@ async function main() {
     where: { type: stringToMeasurementType('LITRE') },
     update: {},
     create: { type: stringToMeasurementType('LITRE') },
+  });
+  await prisma.ingredientMeasurement.upsert({
+    where: { type: stringToMeasurementType('PIECE') },
+    update: {},
+    create: { type: stringToMeasurementType('PIECE') },
   });
   await prisma.ingredientMeasurement.upsert({
     where: { type: stringToMeasurementType('OTHER') },

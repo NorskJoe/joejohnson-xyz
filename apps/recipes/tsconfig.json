@@ -33,6 +33,7 @@
       "@actions/*": ["src/actions/*"],
       "@generated/*": ["prisma/generated/client/*"],
       "@libs/*": ["src/libs/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
   "include": [

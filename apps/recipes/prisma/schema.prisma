@@ -44,12 +44,13 @@ model RecipeIngredient {
 }
 
 enum MeasurementType {
-  GRAMS
-  KGS
+  GRAM
+  KG
   TBSP
   TSP
   CUP
   ML
   LITRE
+  PIECE
   OTHER
 }
