@@ -7,7 +7,7 @@ export const stringToMeasurementType = (str: string): MeasurementType => {
 };
 
 export const measurementTypeToString = (type: MeasurementType): string => {
-  return type.toString();
+  return type === MeasurementType.OTHER ? '' : type.toString().toLowerCase();
 };
 
 export const titleSlugify = (title: string): string => {

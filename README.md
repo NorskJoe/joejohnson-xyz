@@ -68,7 +68,7 @@ Monorepo scaffolded using [Nx](https://nx.dev).
 - TODO: build admin site to add recipes
 - app routing (page, not-found, error, loading, etc)
 - DB is postgres
-- use `npx prisma studio` to open GUI
+- use `npx prisma studio` to open DB GUI
 - Icons are from lucide-react library
 
 `nx dev recipes`
