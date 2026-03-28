@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('../../public/fonts/noto-serif-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../../public/fonts/manrope-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+$font-family-noto-serif: 'Noto Serif', serif;
+$font-family-manrope: 'Manrope', sans-serif;

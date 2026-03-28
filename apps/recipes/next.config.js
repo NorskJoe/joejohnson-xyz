@@ -11,11 +11,15 @@ const nextConfig = {
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
+  sassOptions: {
+    includePaths: ['../node_modules'],
+  },
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '.'),
       '@generated': path.resolve(__dirname, 'prisma/generated/client'),
+      '@variables': path.resolve(__dirname, 'src/styles'),
     };
     return config;
   }
@@ -27,3 +31,6 @@ const plugins = [
 ];
 
 module.exports = composePlugins(...plugins)(nextConfig);
+
+// apps\recipes\prisma\generated\client\browser.ts
+// apps\recipes\src\styles\_colours.scss

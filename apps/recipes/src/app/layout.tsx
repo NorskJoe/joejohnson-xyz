@@ -1,6 +1,7 @@
 import Footer from '../components/footer/footer';
 import Navbar from '../components/navbar/navbar';
 import './global.css';
+import styles from './page.module.scss';
 
 const navbarLinks = [
   {
@@ -37,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={styles['body']}>
         <Navbar links={navbarLinks} />
         <div className="root-container">{children}</div>
         <Footer links={footerLinks} />
