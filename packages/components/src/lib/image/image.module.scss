@@ -1,7 +1,6 @@
 .image {
   &-logo {
-    max-height: 50px;
-    max-width: 100px;
+    height: 3rem;
   }
 
   &-square_zoom {
@@ -19,7 +18,7 @@
   &-round {
     border-radius: 50%;
     border: 1px solid black !important;
-    max-height: 250px;
+    max-height: 200px;
     height: 100%;
     width: auto;
   }
