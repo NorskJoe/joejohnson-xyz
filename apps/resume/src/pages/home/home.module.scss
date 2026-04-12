@@ -1,5 +1,5 @@
 .container {
-  padding-top: 40px;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -14,5 +14,9 @@
 
 .bio {
   text-align: justify;
-  margin: 0 15vh;
+  margin: 0 8.5rem;
+  line-height: 1.5rem;
+  @media (max-width: 768px) {
+    margin: 0 3rem;
+  }
 }
