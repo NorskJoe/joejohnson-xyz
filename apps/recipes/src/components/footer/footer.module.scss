@@ -1,9 +1,11 @@
+@import '@variables/colours';
+
 .footer {
   display: flex;
   width: 100%;
   justify-content: center;
   min-height: 5vh;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid $color-secondary;
   padding-top: 1em;
   margin-top: 1em;
   align-items: center;

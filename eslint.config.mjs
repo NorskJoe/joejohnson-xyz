@@ -15,12 +15,6 @@ export default [
         {
           enforceBuildableLibDependency: true,
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
-          depConstraints: [
-            {
-              sourceTag: 'type:website',
-              onlyDependOnLibsWithTags: ['type:package','@prisma/*','zod'],
-            },
-          ],
         },
       ],
     },

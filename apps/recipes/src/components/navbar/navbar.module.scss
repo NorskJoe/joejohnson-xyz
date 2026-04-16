@@ -1,21 +1,29 @@
+@import '@variables/colours';
+@import '@variables/typography';
+
 .navbar {
   &-list {
     display: flex;
     list-style: none;
-    min-height: 5vh;
+    min-height: 4rem;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid lightgrey;
     padding-bottom: 1em;
+    color: $color-font-heading;
+    font-family: $font-family-noto-serif;
   }
-  &-list-item {
-    padding: 4px 16px;
-    border-radius: 4px;
+  &-link {
+    padding: 0.25rem 1rem;
     font-weight: 700;
     font-size: large;
 
     &:hover {
-      background-color: lightgray;
+      color: $color-font-secondary;
+      border-bottom: 1px solid $color-tertiary;
     }
   }
+}
+
+.active {
+  border-bottom: $color-secondary 1px solid;
 }

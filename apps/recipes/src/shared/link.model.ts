@@ -1,5 +1,6 @@
 export interface Link {
-    link: string;
-    name: string;
-    imageUrl?: string;
+  link: string;
+  name: string;
+  imageUrl?: string;
+  isActive?: boolean;
 }

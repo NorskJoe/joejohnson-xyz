@@ -1,22 +1,25 @@
+import { NavbarProps } from '@components/navbar/navbar.types';
 import Footer from '../components/footer/footer';
 import Navbar from '../components/navbar/navbar';
 import './global.css';
 import styles from './page.module.scss';
 
-const navbarLinks = [
-  {
-    link: '/',
-    name: 'Home',
-  },
-  {
-    link: '/recipes',
-    name: 'Recipes',
-  },
-  {
-    link: '/admin',
-    name: 'Admin',
-  },
-];
+const navbarLinks = {
+  links: [
+    {
+      link: '/',
+      name: 'Home',
+    },
+    {
+      link: '/recipes',
+      name: 'Recipes',
+    },
+    {
+      link: '/admin',
+      name: 'Admin',
+    },
+  ],
+} as NavbarProps;
 
 const footerLinks = [
   {
@@ -31,7 +34,7 @@ const footerLinks = [
   },
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -39,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={styles['body']}>
-        <Navbar links={navbarLinks} />
+        <Navbar links={navbarLinks.links} />
         <div className="root-container">{children}</div>
         <Footer links={footerLinks} />
       </body>

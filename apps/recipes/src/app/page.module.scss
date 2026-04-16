@@ -1,16 +1,11 @@
 @import '@variables/colours';
 @import '@variables/typography';
 
-.body {
-    background-color: $color-neutral;
-}
-
 .title {
     color: $color-font-heading;
-    font-family: $font-family-noto-serif;
+    font-family: $font-family-manrope;
 }
 
 .body {
-    color: $color-font-body;
-    font-family: $font-family-manrope;
+    background-color: $color-neutral;
 }

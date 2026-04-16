@@ -8,8 +8,7 @@ export default function Index() {
    */
   return (
     <div>
-      <h1 className={styles['title']}>Welcome to recipes</h1>
-      <p>Learning next.js (again)</p>
+      <h1 className={styles['title']}>Welcome to Recipes</h1>
     </div>
   );
 }
