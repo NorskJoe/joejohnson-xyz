@@ -76,13 +76,13 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  slug: 'slug',
   description: 'description',
   servings: 'servings',
   prepTimeInMinutes: 'prepTimeInMinutes',
   cookTimeInMinutes: 'cookTimeInMinutes',
   instructions: 'instructions',
-  tags: 'tags'
+  tags: 'tags',
+  slug: 'slug'
 } as const
 
 export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof RecipeScalarFieldEnum]

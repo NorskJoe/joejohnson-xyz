@@ -10,13 +10,14 @@
 */
 
 export const MeasurementType = {
-  GRAMS: 'GRAMS',
-  KGS: 'KGS',
+  GRAM: 'GRAM',
+  KG: 'KG',
   TBSP: 'TBSP',
   TSP: 'TSP',
   CUP: 'CUP',
   ML: 'ML',
   LITRE: 'LITRE',
+  PIECE: 'PIECE',
   OTHER: 'OTHER'
 } as const
 

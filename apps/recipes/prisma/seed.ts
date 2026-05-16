@@ -7,8 +7,7 @@ const connectionString = `${process.env.DATABASE_URL}`;
 const adapter = new PrismaPg({ connectionString: connectionString });
 const prisma = new PrismaClient({ adapter });
 
-async function main() {
-  // Seed ingredient measurements
+async function seedMeasurementType() {
   await prisma.ingredientMeasurement.upsert({
     where: { type: stringToMeasurementType('GRAM') },
     update: {},
@@ -54,6 +53,10 @@ async function main() {
     update: {},
     create: { type: stringToMeasurementType('OTHER') },
   });
+}
+
+async function main() {
+  await seedMeasurementType();
 }
 
 main()
