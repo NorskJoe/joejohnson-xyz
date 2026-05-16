@@ -3,6 +3,9 @@
 import { prisma } from '@libs/db';
 import { stringToMeasurementType, titleSlugify } from '@libs/utils';
 
+/**
+ * TODO: update function so that you can change the recipe name and slug when updating
+ *  */
 export const updateRecipe = async (formData: FormData) => {
   const slug = titleSlugify(formData.get('title') as string);
   const recipe = await prisma.recipe.findUnique({
@@ -38,9 +41,7 @@ export const updateRecipe = async (formData: FormData) => {
           })
         ),
       },
-      instructions: (formData.get('instructions') as string)
-        .split(',')
-        .map((s) => s.trim()),
+      instructions: JSON.parse(formData.get('instructions') as string),
       prepTimeInMinutes: parseInt(formData.get('prepTime') as string),
       cookTimeInMinutes: parseInt(formData.get('cookTime') as string),
       servings: parseInt(formData.get('servings') as string),

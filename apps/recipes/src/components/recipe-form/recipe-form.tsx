@@ -21,9 +21,8 @@ const formSchema = z.object({
       })
     )
     .min(1, 'At least one ingredient is required'),
-  // no array of primitive allowed
   instructions: z
-    .array(z.object({ content: z.string() }))
+    .array(z.string())
     .min(1, 'At least one instruction is required'),
   prepTimeInMinutes: z.coerce.number().min(0, 'Preparation time must be set'),
   cookTimeInMinutes: z.coerce.number().min(0, 'Cooking time must be set'),
@@ -55,9 +54,7 @@ const RecipeForm = (props: RecipeFormProps) => {
           quantity: ri?.quantity || 0,
           measurement: ri?.measurement.type,
         })) || [{ name: '', quantity: 0, measurement: MeasurementType.OTHER }],
-        instructions: recipe?.instructions.map((instruction) => ({
-          content: instruction,
-        })) || [{ content: '' }],
+        instructions: recipe?.instructions || [''],
         prepTimeInMinutes: recipe?.prepTimeInMinutes || 0,
         cookTimeInMinutes: recipe?.cookTimeInMinutes || 0,
         servings: recipe?.servings || 0,
@@ -94,10 +91,7 @@ const RecipeForm = (props: RecipeFormProps) => {
     formData.append('title', data.title);
     formData.append('description', data.description);
     formData.append('ingredients', JSON.stringify(data.ingredients));
-    formData.append(
-      'instructions',
-      data.instructions.map((i) => i.content).join(',')
-    );
+    formData.append('instructions', JSON.stringify(data.instructions));
     formData.append('prepTime', data.prepTimeInMinutes.toString());
     formData.append('cookTime', data.cookTimeInMinutes.toString());
     formData.append('servings', data.servings.toString());
@@ -107,6 +101,7 @@ const RecipeForm = (props: RecipeFormProps) => {
 
   const handleReset = (updatedRecipe: RecipePayload) => {
     if (isCreateMode) {
+      // TODO: direct to recipe detail page for new recipe
       reset();
     } else {
       reset({
@@ -117,9 +112,7 @@ const RecipeForm = (props: RecipeFormProps) => {
           quantity: i.quantity,
           measurement: i.measurement.type,
         })) || [{ name: '', quantity: 0, measurement: MeasurementType.OTHER }],
-        instructions: updatedRecipe.instructions.map((instruction) => ({
-          content: instruction,
-        })) || [{ content: '' }],
+        instructions: updatedRecipe.instructions || [''],
         prepTimeInMinutes: updatedRecipe.prepTimeInMinutes || 0,
         cookTimeInMinutes: updatedRecipe.cookTimeInMinutes || 0,
         servings: updatedRecipe.servings || 0,
@@ -180,16 +173,16 @@ const RecipeForm = (props: RecipeFormProps) => {
       {instructionFields.map((inst, index) => (
         <div key={inst.id}>
           <input
-            {...register(`instructions.${index}.content`)}
+            {...register(`instructions.${index}`)}
             type="text"
             placeholder={`Step ${index + 1}`}
           />
-          {errors.instructions?.[index]?.content?.message && (
-            <p>{errors.instructions[index].content.message}</p>
+          {errors.instructions?.[index]?.message && (
+            <p>{errors.instructions[index].message}</p>
           )}
         </div>
       ))}
-      <button type="button" onClick={() => appendInstruction({ content: '' })}>
+      <button type="button" onClick={() => appendInstruction('')}>
         Add Instruction
       </button>
       <button

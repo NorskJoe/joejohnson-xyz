@@ -28,9 +28,7 @@ export const createRecipe = async (formData: FormData) => {
           })
         ),
       },
-      instructions: (formData.get('instructions') as string)
-        .split(',')
-        .map((s) => s.trim()),
+      instructions: JSON.parse(formData.get('instructions') as string),
       prepTimeInMinutes: parseInt(formData.get('prepTimeInMinutes') as string),
       cookTimeInMinutes: parseInt(formData.get('cookTimeInMinutes') as string),
       servings: parseInt(formData.get('servings') as string),
