@@ -15,19 +15,25 @@ const RecipeDetailPage = async ({ params }: RecipeProps) => {
   const recipe = await fetchRecipe(title);
   const recipeName = recipe?.title || 'Recipe Not Found';
 
+  const hasTags = (tags: string[]): boolean => {
+    return tags.length > 0 && tags[0] !== '';
+  };
+
   return (
     <div className={styles['container']}>
       {recipe ? (
         <>
           <div className={styles['header']}>
             <div className={styles['top-bar']}>
-              <ul className={styles['tags']}>
-                {recipe.tags.map((tag, index) => (
-                  <li className={styles['tag-item']} key={index}>
-                    {tag.toUpperCase()}
-                  </li>
-                ))}
-              </ul>
+              {hasTags(recipe.tags) && (
+                <ul className={styles['tags']}>
+                  {recipe.tags.map((tag, index) => (
+                    <li className={styles['tag-item']} key={index}>
+                      {tag.toUpperCase()}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className={styles['edit-button-container']}>
                 <Link
                   href={`/admin/edit/${title}`}
