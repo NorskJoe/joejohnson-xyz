@@ -8,6 +8,9 @@ import { MeasurementType } from '@generated/enums';
 import { updateRecipe } from '@actions/put';
 import { RecipePayload } from '@shared/prisma-payloads/recipe-payload';
 import { createRecipe } from '@actions/post';
+import { X, Plus } from 'lucide-react';
+
+import styles from './recipe-form.module.scss';
 
 const formSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -30,6 +33,10 @@ const formSchema = z.object({
   tags: z.string(),
 });
 
+/**
+ * TODO: fix fonts in text-area
+ * TODO: route to recipe detail after save
+ */
 const RecipeForm = (props: RecipeFormProps) => {
   const isCreateMode = props.mode === 'create';
   let recipe: RecipePayload | undefined = undefined;
@@ -53,7 +60,10 @@ const RecipeForm = (props: RecipeFormProps) => {
           name: ri?.ingredient?.name || '',
           quantity: ri?.quantity || 0,
           measurement: ri?.measurement.type,
-        })) || [{ name: '', quantity: 0, measurement: MeasurementType.OTHER }],
+        })) || [
+          { name: '', quantity: 0, measurement: MeasurementType.GRAM },
+          { name: '', quantity: 0, measurement: MeasurementType.GRAM },
+        ],
         instructions: recipe?.instructions || [''],
         prepTimeInMinutes: recipe?.prepTimeInMinutes || 0,
         cookTimeInMinutes: recipe?.cookTimeInMinutes || 0,
@@ -101,7 +111,6 @@ const RecipeForm = (props: RecipeFormProps) => {
 
   const handleReset = (updatedRecipe: RecipePayload) => {
     if (isCreateMode) {
-      // TODO: direct to recipe detail page for new recipe
       reset();
     } else {
       reset({
@@ -133,115 +142,172 @@ const RecipeForm = (props: RecipeFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        {...register('title')}
-        type="text"
-        name="title"
-        placeholder="Recipe Title"
-      />
-      {errors.title?.message && <p>{errors.title.message}</p>}
-      <textarea
-        {...register('description')}
-        name="description"
-        placeholder="Recipe Description"
-      ></textarea>
-      {ingredientFields.map((ing, index) => (
-        <div key={ing.id}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles['form-container']}
+    >
+      <label className={styles['input-group']}>
+        <span>RECIPE TITLE</span>
+        <input
+          {...register('title')}
+          className={styles['text-input']}
+          type="text"
+          name="title"
+          placeholder="Enter title"
+        />
+        {errors.title?.message && <p>{errors.title.message}</p>}
+      </label>
+
+      <label className={styles['input-group']}>
+        <span>RECIPE DESCRIPTION</span>
+        <textarea
+          {...register('description')}
+          className={styles['text-area-input']}
+          name="description"
+          placeholder="Enter description"
+        ></textarea>
+      </label>
+      <label className={styles['input-group']}>
+        <span>RECIPE TAGS</span>
+        <input
+          {...register('tags')}
+          className={styles['text-input']}
+          type="text"
+          name="tags"
+          placeholder="e.g. Dinner, Easy, Chicken"
+        />
+      </label>
+      <div className={styles['metadata']}>
+        <label className={styles['input-group']}>
+          <span>NUMBER OF SERVINGS</span>
           <input
-            {...register(`ingredients.${index}.name`)}
-            type="text"
-            placeholder="Ingredient name"
-          />
-          {errors.ingredients?.[index]?.name?.message && (
-            <p>{errors.ingredients[index].name.message}</p>
-          )}
-          <input
-            {...register(`ingredients.${index}.quantity`)}
+            {...register('servings')}
+            className={styles['number-input']}
             type="number"
-            placeholder="Quantity"
+            name="servings"
           />
-          <select {...register(`ingredients.${index}.measurement`)}>
-            {Object.values(MeasurementType).map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
-        </div>
-      ))}
-      {instructionFields.map((inst, index) => (
-        <div key={inst.id}>
+          {errors.servings?.message && <p>{errors.servings.message}</p>}
+        </label>
+        <label className={styles['input-group']}>
+          <span>PREP TIME</span>
           <input
-            {...register(`instructions.${index}`)}
-            type="text"
-            placeholder={`Step ${index + 1}`}
+            {...register('prepTimeInMinutes')}
+            className={styles['number-input']}
+            type="number"
+            name="prepTimeInMinutes"
           />
-          {errors.instructions?.[index]?.message && (
-            <p>{errors.instructions[index].message}</p>
+          {errors.prepTimeInMinutes?.message && (
+            <p>{errors.prepTimeInMinutes.message}</p>
           )}
-        </div>
-      ))}
-      <button type="button" onClick={() => appendInstruction('')}>
-        Add Instruction
-      </button>
-      <button
-        type="button"
-        onClick={() => removeInstruction(instructionFields.length - 1)}
-      >
-        Remove Last Instruction
-      </button>
-      <input
-        {...register('prepTimeInMinutes')}
-        type="number"
-        name="prepTimeInMinutes"
-        placeholder="Preparation Time (minutes)"
-      />
-      {errors.prepTimeInMinutes?.message && (
-        <p>{errors.prepTimeInMinutes.message}</p>
-      )}
-      <input
-        {...register('cookTimeInMinutes')}
-        type="number"
-        name="cookTimeInMinutes"
-        placeholder="Cooking Time (minutes)"
-      />
-      {errors.cookTimeInMinutes?.message && (
-        <p>{errors.cookTimeInMinutes.message}</p>
-      )}
-      <input
-        {...register('servings')}
-        type="number"
-        name="servings"
-        placeholder="Servings"
-      />
-      {errors.servings?.message && <p>{errors.servings.message}</p>}
-      <input
-        {...register('tags')}
-        type="text"
-        name="tags"
-        placeholder="Tags (comma separated)"
-      />
-      <button type="submit">
-        {isCreateMode ? 'Create Recipe' : 'Update Recipe'}
-      </button>
-      <button
-        type="button"
-        onClick={() =>
-          appendIngredient({
-            name: '',
-            quantity: 0,
-            measurement: MeasurementType.OTHER,
-          })
-        }
-      >
-        Add Ingredient
-      </button>
-      <button
-        type="button"
-        onClick={() => removeIngredient(ingredientFields.length - 1)}
-      >
-        Remove Last Ingredient
+        </label>
+        <label className={styles['input-group']}>
+          <span>COOK TIME</span>
+          <input
+            {...register('cookTimeInMinutes')}
+            className={styles['number-input']}
+            type="number"
+            name="cookTimeInMinutes"
+          />
+          {errors.cookTimeInMinutes?.message && (
+            <p>{errors.cookTimeInMinutes.message}</p>
+          )}
+        </label>
+      </div>
+      <div className={styles['section']}>
+        <h3 className={styles['section-title']}>Ingredients</h3>
+        {ingredientFields.map((ing, index) => (
+          <div key={ing.id} className={styles['section-item']}>
+            <label className={styles['input-group']}>
+              <span className={styles['small']}>QUANTITY</span>
+              <input
+                {...register(`ingredients.${index}.quantity`)}
+                className={styles['number-input-small']}
+                type="number"
+              />
+            </label>
+            <label className={styles['input-group']}>
+              <span className={styles['small']}>MEASURE</span>
+              <select
+                {...register(`ingredients.${index}.measurement`)}
+                className={styles['select-input']}
+              >
+                {Object.values(MeasurementType).map((m) => (
+                  <option key={m} value={m}>
+                    {m.toLowerCase()}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className={styles['input-group']}>
+              <span className={styles['small']}>INGREDIENT NAME</span>
+              <input
+                {...register(`ingredients.${index}.name`)}
+                type="text"
+                className={styles['text-input-small']}
+              />
+              {errors.ingredients?.[index]?.name?.message && (
+                <p>{errors.ingredients[index].name.message}</p>
+              )}
+            </label>
+            <button
+              type="button"
+              className={styles['remove-button']}
+              onClick={() => removeIngredient(index)}
+            >
+              <X />
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          className={styles['add-button']}
+          onClick={() =>
+            appendIngredient(
+              {
+                name: '',
+                quantity: 0,
+                measurement: MeasurementType.OTHER,
+              },
+              { shouldFocus: true }
+            )
+          }
+        >
+          <Plus /> ADD ANOTHER INGREDIENT
+        </button>
+      </div>
+      <div className={styles['section']}>
+        <h3 className={styles['section-title']}>Instructions</h3>
+
+        {instructionFields.map((inst, index) => (
+          <div key={inst.id} className={styles['section-item']}>
+            <div className={styles['instruction-step']}>{index + 1}</div>
+            <input
+              {...register(`instructions.${index}`)}
+              type="text"
+              className={styles['text-input-large']}
+            />
+            {errors.instructions?.[index]?.message && (
+              <p>{errors.instructions[index].message}</p>
+            )}
+            <button
+              type="button"
+              className={styles['remove-button']}
+              onClick={() => removeInstruction(index)}
+            >
+              <X />
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          className={styles['add-button']}
+          onClick={() => appendInstruction('', { shouldFocus: true })}
+        >
+          <Plus /> ADD ANOTHER STEP
+        </button>
+      </div>
+      <button className={styles['save-button']} type="submit">
+        {isCreateMode ? 'Save Recipe' : 'Update Recipe'}
       </button>
     </form>
   );
