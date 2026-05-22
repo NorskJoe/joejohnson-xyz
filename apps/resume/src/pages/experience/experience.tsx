@@ -8,8 +8,13 @@ const experienceProps = [
     jobTitle: 'Full-stack Software Engineer',
     imageUrl: 'logos/wooliesx.png',
     startDate: '2021-01-01',
-    description:
-      'Focused on personalisation and content delivery for the Woolworths Online Store. I’ve contributed to major projects including a targeted video ad unit, migration of the website from Angular to React, contributing to the Woolworths Group Core Components library, and modernising content services. Skilled in React, Angular, Node.js, .NET Core, Azure DevOps, and Adobe Target. I also support team growth through onboarding, knowledge sharing, and technical leadership.',
+    description: `
+      Focused on personalisation and content delivery for the Woolworths Online Store. I’ve contributed 
+      to major projects including a targeted video ad unit, migration of the website from Angular to React, 
+      contributing to the Woolworths Group Core Component library, and modernising content services. 
+      Skilled in React, Angular, Node.js, .NET Core, Azure DevOps, and Adobe Target. I also support 
+      team growth through onboarding, knowledge sharing, and technical leadership.
+    `,
   },
   {
     company: 'Quantum IT',
@@ -17,8 +22,13 @@ const experienceProps = [
     imageUrl: 'logos/quantumit.png',
     startDate: '2018-02-01',
     endDate: '2020-10-01',
-    description:
-      'I worked across both frontend (Angular) and backend (.NET Core/.NET Framework, SQL Server) to build and maintain InPlace, a globally used student management system. I led key projects like site localisation for Welsh and Arabic, migrated legacy Razor pages to Angular, and consistently ranked highest in resolving client production issues. I also contributed to release management using Azure DevOps.',
+    description: `
+      I worked across both frontend (Angular) and backend (.NET Core, .NET Framework, SQL Server) 
+      to build and maintain InPlace, a globally used student management system. I led key projects 
+      like site localisation so that the app could be deployed seamlessly in other languages, 
+      migrated legacy Razor pages to Angular, and consistently ranked highest in resolving client 
+      production issues. I also contributed to release management using Azure DevOps.
+    `,
   },
 ];
 
