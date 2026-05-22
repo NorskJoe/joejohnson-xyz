@@ -1,5 +1,15 @@
+@use '@variables/colours' as *;
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.add-button {
+  border: none;
+  border-radius: 0.25rem;
+  background-color: $color-primary;
+  color: $color-font-white;
+  padding: 1rem;
 }
