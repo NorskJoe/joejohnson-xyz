@@ -1,0 +1,29 @@
+@import '@variables/colours';
+@import '@variables/typography';
+
+.navbar {
+  &-list {
+    display: flex;
+    list-style: none;
+    min-height: 4rem;
+    justify-content: center;
+    align-items: center;
+    color: $color-font-heading;
+    font-family: $font-family-noto-serif;
+  }
+  &-link {
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    font-size: large;
+    padding-bottom: 1rem;
+
+    &:hover {
+      color: $color-font-secondary;
+      border-bottom: 1px solid $color-accent;
+    }
+  }
+}
+
+.active {
+  border-bottom: $color-secondary 1px solid;
+}

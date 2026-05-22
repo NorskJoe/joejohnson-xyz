@@ -1,0 +1,11 @@
+@import '@variables/colours';
+@import '@variables/typography';
+
+.title {
+    color: $color-font-heading;
+    font-family: $font-family-manrope;
+}
+
+.body {
+    background-color: $color-neutral;
+}

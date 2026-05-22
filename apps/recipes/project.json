@@ -1,9 +1,9 @@
 {
-  "name": "resume",
+  "name": "recipes",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/resume/src",
+  "sourceRoot": "apps/recipes",
   "projectType": "application",
   "tags": ["type:website"],
-  "// targets": "to see all targets run: nx show project resume --web",
+  "// targets": "to see all targets run: nx show project recipes --web",
   "targets": {}
 }
