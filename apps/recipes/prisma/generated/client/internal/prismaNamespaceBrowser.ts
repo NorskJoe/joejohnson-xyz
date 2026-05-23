@@ -54,7 +54,8 @@ export const ModelName = {
   Recipe: 'Recipe',
   Ingredient: 'Ingredient',
   IngredientMeasurement: 'IngredientMeasurement',
-  RecipeIngredient: 'RecipeIngredient'
+  RecipeIngredient: 'RecipeIngredient',
+  User: 'User'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -82,7 +83,11 @@ export const RecipeScalarFieldEnum = {
   cookTimeInMinutes: 'cookTimeInMinutes',
   instructions: 'instructions',
   tags: 'tags',
-  slug: 'slug'
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
 } as const
 
 export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof RecipeScalarFieldEnum]
@@ -113,6 +118,15 @@ export const RecipeIngredientScalarFieldEnum = {
 } as const
 
 export type RecipeIngredientScalarFieldEnum = (typeof RecipeIngredientScalarFieldEnum)[keyof typeof RecipeIngredientScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const SortOrder = {

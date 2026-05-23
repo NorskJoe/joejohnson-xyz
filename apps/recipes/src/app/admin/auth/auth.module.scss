@@ -1,0 +1,75 @@
+@use '@variables/colours' as *;
+@use '@variables/typography' as *;
+
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.auth-modal {
+  width: min(30rem, 90vw);
+  background-color: $color-neutral;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  position: relative;
+  font-family: $font-family-noto-serif;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+  font-size: 1.8rem;
+  color: $color-primary;
+}
+
+.field-label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: $color-font-secondary;
+}
+
+.field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid $color-neutral-dark;
+  font-size: 1rem;
+}
+
+.field-error {
+  margin: 0.5rem 0 0;
+  color: $color-font-error;
+  font-size: 0.9rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: $color-primary;
+  color: $color-font-white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.footer-text {
+  margin-top: 20px;
+  text-align: center;
+  color: $color-font-secondary;
+  font-size: 0.95rem;
+}
+
+.switch-text {
+  color: $color-font-body;
+  cursor: pointer;
+  font-weight: 600;
+}

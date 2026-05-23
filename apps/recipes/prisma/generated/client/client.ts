@@ -57,3 +57,8 @@ export type IngredientMeasurement = Prisma.IngredientMeasurementModel
  * 
  */
 export type RecipeIngredient = Prisma.RecipeIngredientModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel

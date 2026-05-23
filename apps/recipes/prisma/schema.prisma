@@ -18,6 +18,10 @@ model Recipe {
   tags              String[]           @default([])
   slug              String             @unique
   recipeIngredients RecipeIngredient[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  createdBy         String
+  updatedBy         String
 }
 
 model Ingredient {
@@ -53,4 +57,10 @@ enum MeasurementType {
   LITRE
   PIECE
   OTHER
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String // bcrypt hashed password
 }

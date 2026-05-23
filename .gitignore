@@ -50,3 +50,5 @@ storybook-static
 .next
 out
 /generated/prisma
+
+apps/recipes/.env
